@@ -1,9 +1,12 @@
 ﻿################################################################################
 # Content paths
 ################################################################################
+$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $ErrorActionPreference = 'Stop';
 $packageName= 'airtest-ide'
  
+$folderName =  Join-Path $toolsDir 'AirtestIDE'
+
 $ProgramsPath = [environment]::GetFolderPath([environment+specialfolder]::Programs)
 $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
 
@@ -32,3 +35,13 @@ try {
 catch {
     Write-Host 'Shortcut AirtestIDE.lnk not found in Desktop. Nothing to remove. Skipping.'
 }
+
+# AirtestIDE folder
+try {
+    remove-item -path $folderName\* -Force -Recurse -ErrorAction SilentlyContinue
+    Write-Host 'AirtestIDE folder successfully cleared.'
+}
+catch {
+    Write-Host 'AirtestIDE folder not cleared. Something went wrong. Skipping.'
+}
+

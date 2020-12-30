@@ -21,6 +21,8 @@ $packageArgs = @{
   checksum64    = '2CF4C8DA42D3D49AB3CE2616A255F95168065F820AFF850AA77B177E1C86680F'
   checksumType64= 'sha256'
 }
+$testProcessAdminRights = Test-ProcessAdminRights
+Write-Host "ProcessAdminRights:" $testProcessAdminRights
 
 ################################################################################
 # https://chocolatey.org/docs/helpers-install-chocolatey-zip-package
@@ -47,8 +49,5 @@ $shortcutFilePathDesktopPath = Join-Path $DesktopPath "AirtestIDE.lnk"
 Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathProgramsPath -targetPath $airtestShimm 
 Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathDesktopPath -targetPath $airtestShimm 
 
-################################################################################
-## Unzips a file to the specified location - auto overwrites existing content
-## - https://chocolatey.org/docs/helpers-get-chocolatey-unzip
-################################################################################
-#Get-ChocolateyUnzip @packageArgs
+$testPath = Test-Path -Path $airtestFolder
+Write-Host "AirtestIDE folder exists:" $testPath

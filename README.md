@@ -1,2 +1,3 @@
 # AirtestIDE-chocolatey
-Chocolatey scripts and mirror of releases https://github.com/AirtestProject/Airtest
+- Original source here: https://github.com/AirtestProject/Airtest
+- Chocolatey page: https://chocolatey.org/packages/airtest-ide/

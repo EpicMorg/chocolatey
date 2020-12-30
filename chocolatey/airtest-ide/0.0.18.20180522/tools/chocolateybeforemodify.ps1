@@ -19,6 +19,8 @@ $adbAirtestBin = Join-Path '$adbAirtestFolder' 'adb.exe'
 $chromedriverAirtestBin = Join-Path $airtestFolder 'chromedriver.exe'
 $qtWebEngineProcessAirtestBin = Join-Path $airtestFolder 'QtWebEngineProcess.exe'
 
+$testProcessAdminRights = Test-ProcessAdminRights
+Write-Host "ProcessAdminRights:" $testProcessAdminRights
 
 ################################################################################
 # Trying to remove shortcuts
@@ -27,18 +29,18 @@ $qtWebEngineProcessAirtestBin = Join-Path $airtestFolder 'QtWebEngineProcess.exe
 try {
     $shortcutFilePathProgramsPath = Join-Path $ProgramsPath 'AirtestIDE.lnk'
     Remove-Item -Path $shortcutFilePathProgramsPath -Force
-    Write-Host 'Shortcut AirtestIDE.lnk removed.'
+    Write-Host 'Shortcut AirtestIDE.lnk successfully removed from Start Menu.'
 }
 catch {
-    Write-Host 'Shortcut AirtestIDE.lnk not found. Skipping.'
+    Write-Host 'Shortcut AirtestIDE.lnk not found in Start Menu. Nothing to remove. Skipping.'
 }
 
 # From Desktop
 try {
     $shortcutFilePathDesktopPath = Join-Path $DesktopPath 'AirtestIDE.lnk'
     Remove-Item -Path $shortcutFilePathDesktopPath -Force
-    Write-Host 'Shortcut AirtestIDE.lnk removed.'
+    Write-Host 'Shortcut AirtestIDE.lnk successfully removed from Desktop.'
 }
 catch {
-    Write-Host 'Shortcut AirtestIDE.lnk not found. Skipping.'
+    Write-Host 'Shortcut AirtestIDE.lnk not found in Desktop. Nothing to remove. Skipping.'
 }

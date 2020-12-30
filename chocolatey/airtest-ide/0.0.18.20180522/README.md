@@ -15,5 +15,5 @@
 - Fix the problem that screenshots cannot be saved in directories with some Chinese characters
 
 ### Download
-- Windows: [AirtestIDE_2018-05-22_18.zip](http://top.gdl.netease.com/AirtestIDE_2018-05-22_18.zip)
-- Mac: [AirtestIDE_Mac_2018-05-22_18.dmg](http://top.gdl.netease.com/AirtestIDE_Mac_2018-05-22_18.dmg)
+- Windows: [AirtestIDE_2018-05-22_18.zip](https://top.gdl.netease.com/AirtestIDE_2018-05-22_18.zip)
+- Mac: [AirtestIDE_Mac_2018-05-22_18.dmg](https://top.gdl.netease.com/AirtestIDE_Mac_2018-05-22_18.dmg)

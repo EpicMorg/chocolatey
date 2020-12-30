@@ -13,8 +13,6 @@
  
 *   **Poco:** [Poco](https://github.com/AirtestProject/Poco) adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
 
-Get started from [airtest homepage](https://airtest.netease.com/)
-
 ## Game Test
 With image recognition and UI hierarchy, our automation framework support game testing. [Read more](https://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature1.png) 
@@ -38,13 +36,13 @@ With poco, Airtest can access iOS native element and find out their location and
 Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element. [Read more](https://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-web.png)
 
-
+Get started from [airtest homepage](https://airtest.netease.com/).
 
 # Documentation
 
 You can find the complete Airtest documentation on [readthedocs](http://airtest.readthedocs.io/).
  
-# Links
+# Other Links
 
 - Original source here: https://github.com/AirtestProject/Airtest
 - Chocolatey page: https://chocolatey.org/packages/airtest-ide/

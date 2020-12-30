@@ -2,11 +2,11 @@
 
 ![](https://rawcdn.githack.com/EpicMorg/chocolatey/f417f8672891b4ea65928fac2be14a51b55957d3/.github/logo.png)
 
-# Some released stuff  [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B81CUI4)
+# :pushpin: Some released stuff  [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B81CUI4)
 
  Product | Version   | Downloads | Notes
 | ------  | ------ | ------ | ------
-|  [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | :sparkles:
+| :open_file_folder: [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | :sparkles:
 
-## Thanks
+## :smile: Thanks
 * ` vacancy is open` :)

@@ -8,7 +8,7 @@
     <title>Airtest IDE (Portable)</title>
     <authors>NetEase Inc</authors>
     <projectUrl>https://airtest.netease.com/</projectUrl>
-    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/icons/airtest_128.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/fa6b2288d40bb748eef08ab9b67fd9fb588fec3e/.github/airtest-ide/icons/airtest_128.png</iconUrl>
     <copyright>Copyright (c) 2018 NetEase, Inc</copyright>
     <licenseUrl>https://github.com/AirtestProject/Airtest/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

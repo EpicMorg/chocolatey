@@ -6,7 +6,7 @@
 
  Product | Version   | Downloads | Notes
 | ------  | ------ | ------ | ------
-|  [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | Visible only latest published version of package.
+|  [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | :sparkles:
 
 ## Thanks
 * ` vacancy is open` :)

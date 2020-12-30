@@ -21,7 +21,7 @@
 - Optimize the Airtest logging mechanism
 
 ## Download
-- Windows64: [AirtestIDE_2018-06-26_py3_win64.zip](http://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_win64.zip)
-- Windows32: [AirtestIDE_2018-06-26_py3_win32.zip](http://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_win32.zip)
-- Mac: [AirtestIDE_2018-06-26_py3_Mac10-12.dmg](http://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_Mac10-12.dmg)
-- Ubuntu: [AirtestIDE_2018-06-26_py3_ubuntu16-04.deb](http://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_ubuntu16-04.deb)
+- Windows64: [AirtestIDE_2018-06-26_py3_win64.zip](https://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_win64.zip)
+- Windows32: [AirtestIDE_2018-06-26_py3_win32.zip](https://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_win32.zip)
+- Mac: [AirtestIDE_2018-06-26_py3_Mac10-12.dmg](https://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_Mac10-12.dmg)
+- Ubuntu: [AirtestIDE_2018-06-26_py3_ubuntu16-04.deb](https://top.gdl.netease.com/AirtestIDE_2018-06-26_py3_ubuntu16-04.deb)

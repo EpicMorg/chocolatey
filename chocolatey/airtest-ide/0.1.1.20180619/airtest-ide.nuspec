@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>airtest-ide</id>
-    <version>0.0.18.20180522</version>
+    <version>0.1.1.20180619</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>Airtest IDE (Portable)</title>
@@ -41,21 +41,17 @@ Base on Chrome Devtools Protocol, record and generate selenium scripts, accurate
 # Documentation
 You can find the complete Airtest documentation on readthedocs.
     </description>
-    <releaseNotes># V0.0.18
-## Release Date: 2018-05-22
+    <releaseNotes># V0.1.1.20180619
+## Release Date: 2018-06-19
 
-### New Features
-- Add poco support for iOS native apps
-### Bug Fixes
-- Optimize Home button style for iOS device screen
-- Fix the abnormal occupancy problem of adb.exe file descriptor
-- Fix a crash issue that happens after switching record/edit mode of selenium plugin
-- Fix the problem that a phone with STF-installed cannot be initialized correctly
-- Fix a crash issue that happens when debugging without a phone connected
-- Fix the issue that 'sleep' statement without any arguments causes the report generation failure
-- Fix the issue that ‘assert’ statement cannot write log into log.file when an error occurs
-- Fix the problem that users cannot use exec_script with py3
-- Fix the problem that screenshots cannot be saved in directories with some Chinese characters
+## New Features
+- Resume Poco pause function
+
+## Bug Fixes
+- Fix Poco-Android initialization failure bug
+- Fix bug that the images was emptied by mistake
+- Fix bugs when login fails
+- Please use AirtestIDE in English path
     </releaseNotes>
   </metadata>
   <files>

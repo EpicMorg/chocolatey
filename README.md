@@ -5,22 +5,48 @@
 
 * **AirtestIDE** - is an out of the box GUI tool that helps to create and run cases in a user-friendly way. AirtestIDE supports a complete automation workflow: ``create -> run -> report``.
 
-## Features
+# Features
 
 *   **Write Once, Run Anywhere:** Airtest provides cross-platform APIs, including app installation, simulated input, assertion and so forth. Airtest uses image recognition technology to locate UI elements so that you can automate games and apps without injecting any code. 
 
 *   **Fully Scalable:** Airtest cases can be easily run on large device farms, using commandline or python API. HTML reports with detailed info and screen recording allow you to quickly locate failure points. NetEase builds [Airlab](https://airlab.163.com/) on top of the Airtest Project.
-
-
+ 
 *   **Poco:** [Poco](https://github.com/AirtestProject/Poco) adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
 
 Get started from [airtest homepage](http://airtest.netease.com/)
 
-## Documentation
+#### Game Test
+With image recognition and UI hierarchy, our automation framework support game testing.
+
+![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature1.png) 
+
+- Supports all game engines and apps
+- Multiplatform
+- Easy to use
+
+#### Android native apps
+In Android native apps' testing process, Airtest can play a siginificant role - plug-and-play.
+![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-android.png) 
+
+#### Windows applications
+Support for Windows applications, write one code and run the it across the platforms.
+![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-windows.png) 
+
+#### iOS Support
+With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient.
+![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/ios-poco.png)
+
+#### Selenium Plugin
+Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element.
+![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-web.png)
+
+
+
+# Documentation
 
 You can find the complete Airtest documentation on [readthedocs](http://airtest.readthedocs.io/).
-
-## Links
+ 
+# Links
 
 - Original source here: https://github.com/AirtestProject/Airtest
 - Chocolatey page: https://chocolatey.org/packages/airtest-ide/

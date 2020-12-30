@@ -4,9 +4,9 @@
 
 # Some released stuff  [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B81CUI4)
 
- Application | Version   | Downloads | Notes
+ Product | Version   | Downloads | Notes
 | ------  | ------ | ------ | ------
-|    |   |  |  
+|  [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | Visible only latest published version of package.
 
 ## Thanks
 * ` vacancy is open` :)

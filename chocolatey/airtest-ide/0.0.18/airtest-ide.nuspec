@@ -6,7 +6,7 @@
     <packageSourceUrl>https://github.com/EpicMorg/AirtestIDE-chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>airtest-ide (Portable)</title>
-    <authors>NetEase, Inc</authors>
+    <authors>NetEase Inc</authors>
     <projectUrl>https://airtest.netease.com/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/EpicMorg/AirtestIDE-chocolatey/master/.github/48x48.png</iconUrl>
     <copyright>Copyright (c) 2018 NetEase, Inc</copyright>

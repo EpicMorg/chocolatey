@@ -4,7 +4,6 @@ $ErrorActionPreference = 'Stop';
 
 $packageName= 'airtest-ide'
 $folderName =  Join-Path $toolsDir 'AirtestIDE'
-$zippedfolderName = 'AirtestIDE_2018-05-22_18'
 
 $packageArgs = @{
   packageName   = $packageName
@@ -21,23 +20,19 @@ $packageArgs = @{
   checksum64    = '2CF4C8DA42D3D49AB3CE2616A255F95168065F820AFF850AA77B177E1C86680F'
   checksumType64= 'sha256'
 }
+
 $testProcessAdminRights = Test-ProcessAdminRights
 Write-Host "ProcessAdminRights:" $testProcessAdminRights
 
 ################################################################################
 # https://chocolatey.org/docs/helpers-install-chocolatey-zip-package
 ################################################################################
-Install-ChocolateyZipPackage -SpecificFolder $zippedfolderName @packageArgs 
+Install-ChocolateyZipPackage @packageArgs 
 
 ################################################################################
 # Install  shortcuts
 ################################################################################
-$airtestFolder = Join-Path $folderName $zippedfolderName
-$airtestBin = Join-Path $airtestFolder 'AirtestIDE.exe'
 $airtestShimm = Join-Path $chocoRootBin 'AirtestIDE.exe'
-
-Write-Host "airtestFolder: $airtestFolder"
-Write-Host "airtestBin: $airtestBin"
 Write-Host "airtestShimm: $airtestShimm"
 
 $ProgramsPath = [environment]::GetFolderPath([environment+specialfolder]::Programs)
@@ -46,8 +41,5 @@ $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFo
 $shortcutFilePathProgramsPath = Join-Path $ProgramsPath "AirtestIDE.lnk"
 $shortcutFilePathDesktopPath = Join-Path $DesktopPath "AirtestIDE.lnk"
 
-Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathProgramsPath -targetPath $airtestShimm 
-Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathDesktopPath -targetPath $airtestShimm 
-
-$testPath = Test-Path -Path $airtestFolder
-Write-Host "AirtestIDE folder exists:" $testPath
+Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathProgramsPath -targetPath $airtestShimm
+Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathDesktopPath -targetPath $airtestShimm

@@ -13,29 +13,29 @@
  
 *   **Poco:** [Poco](https://github.com/AirtestProject/Poco) adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
 
-Get started from [airtest homepage](http://airtest.netease.com/)
+Get started from [airtest homepage](https://airtest.netease.com/)
 
 ## Game Test
-With image recognition and UI hierarchy, our automation framework support game testing. (Read more)[http://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html].
+With image recognition and UI hierarchy, our automation framework support game testing. [Read more](https://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature1.png) 
 - Supports all game engines and apps
 - Multiplatform
 - Easy to use
 
 ## Android native apps
-In Android native apps' testing process, Airtest can play a siginificant role - plug-and-play. (Read more)[https://airtest.doc.io.netease.com/en/tutorial/5_Android_automated_testing_two/].
+In Android native apps' testing process, Airtest can play a siginificant role - plug-and-play. [Read more](https://airtest.doc.io.netease.com/en/tutorial/5_Android_automated_testing_two/).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-android.png) 
 
 ## Windows applications
-Support for Windows applications, write one code and run the it across the platforms. (Read more)[https://airtest.doc.io.netease.com/en/tutorial/7_Windows_automated_testing/].
+Support for Windows applications, write one code and run the it across the platforms. [Read more](https://airtest.doc.io.netease.com/en/tutorial/7_Windows_automated_testing/).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-windows.png) 
 
 ## iOS Support
-With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient. (Read more)[https://airtest.doc.io.netease.com/en/tutorial/6_IOS_automated_testing/].
+With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient. [Read more](https://airtest.doc.io.netease.com/en/tutorial/6_IOS_automated_testing/).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/ios-poco.png)
 
 ## Selenium Plugin
-Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element. (Read more)[http://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html].
+Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element. [Read more](https://airtest.netease.com/docs/en/1_quick_start/5_get_started_with_web_test.html).
 ![AIRtest](https://rawcdn.githack.com/EpicMorg/AirtestIDE-chocolatey/cc1aeec9b90a710e8c38877eb80e1fa382b04055/.github/airtest-ide/screenshots/feature-web.png)
 
 

@@ -7,6 +7,8 @@
  Product | Version   | Downloads
 | ------  | ------ | ------ 
 | :open_file_folder: [airtest-ide](./chocolatey/airtest-ide) |  [![Version](https://img.shields.io/chocolatey/v/airtest-ide?label=version&style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) | [![Version](https://img.shields.io/chocolatey/dt/airtest-ide?style=for-the-badge)](https://chocolatey.org/packages/airtest-ide/) 
+| :open_file_folder: [atlassian-downloader](./chocolatey/atlassian-downloader) |  [![Version](https://img.shields.io/chocolatey/v/atlassian-downloader?label=version&style=for-the-badge)](https://chocolatey.org/packages/atlassian-downloader/) | [![Version](https://img.shields.io/chocolatey/dt/atlassian-downloader?style=for-the-badge)](https://chocolatey.org/packages/atlassian-downloader/) 
+
 
 ## :smile: Thanks
 * ` vacancy is open` :)

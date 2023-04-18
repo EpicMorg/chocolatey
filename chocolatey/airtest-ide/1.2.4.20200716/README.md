@@ -20,6 +20,6 @@
 - Fixed the problem that setting the Chinese log path under the mac will cause an error in report generation.
 
 ## Download
-- Windows64: [AirtestIDE_2020-07-16_py3_win64.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/AirtestIDE_2020-07-16_py3_win64.zip)
-- Windows32: [AirtestIDE_2020-07-16_py3_win32.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/AirtestIDE_2020-07-16_py3_win32.zip)
-- Mac: [AirtestIDE_2020-07-16_py3_Mac10-12.dmg](https://airtestproject.s3.netease.com/downloads/AirtestIDE/AirtestIDE_2020-07-16_py3_Mac10-12.dmg)
+- Windows64: [AirtestIDE-win-1.24.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.24.zip)
+- Windows32: [AirtestIDE-win-1.24.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.24.zip)
+- Mac: [AirtestIDE-mac-1.24.dmg](https://airtestproject.s3.netease.com/downloads/AirtestIDE/mac/AirtestIDE-mac-1.2.7.dmg)

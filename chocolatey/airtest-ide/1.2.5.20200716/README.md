@@ -1,8 +1,8 @@
-# V1.2.4.20200716
+# V1.2.15.20230404
 ## Release Date: 2020-07-16
 
 ## New Features
-- Airtest has been updated to version 1.1.4, and the calling method of interface swipe_along/pinch/two_finger_swipe has been modified. Xcode support has been updated to version 11.5 and iOS version has been supported to 13.5.
+- Airtest has been updated to version 1.1.4, and the calling method of interface swipe_along/pinch/two_finger_swipe has been modified. Xcode support has been updated to version 11.5 and iOS version has been supported to 13.5. Please check the update log for details: Airtest#1.1.4
 - Added automatic update function of AirtestIDE.
 - Optimized the search function of the script editing window.
 - Slightly optimized log level filtering function.
@@ -20,6 +20,7 @@
 - Fixed the problem that setting the Chinese log path under the mac will cause an error in report generation.
 
 ## Download
-- Windows64: [AirtestIDE-win-1.2.4.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.4.zip)
-- Windows32: [AirtestIDE-win-1.2.4.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.4.zip)
-- Mac: [AirtestIDE-mac-1.2.4.dmg](https://airtestproject.s3.netease.com/downloads/AirtestIDE/mac/AirtestIDE-mac-1.2.4.dmg)
+- Windows64: [AirtestIDE-win-1.2.15.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.15.zip)
+- Windows32: [AirtestIDE-win-1.2.15.zip](https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.15.zip)
+- Mac: [AirtestIDE-mac-1.2.15.dmg](https://airtestproject.s3.netease.com/downloads/AirtestIDE/mac/AirtestIDE-mac-1.2.15.dmg)
+ 

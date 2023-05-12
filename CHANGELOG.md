@@ -36,3 +36,5 @@
 	* fixed `1.2.4.20200716` version of `airtest-ide`
 	* fixed `1.2.15.20230404` version of `airtest-ide`
 	* added `1.2.8.20210223` version of `airtest-ide`
+	* added `1.2.9.20210427` version of `airtest-ide`
+	* added `1.2.10.20210621` version of `airtest-ide`

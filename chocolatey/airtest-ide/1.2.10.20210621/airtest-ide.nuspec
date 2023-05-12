@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>airtest-ide</id>
+    <version>1.2.10.20210621</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Airtest IDE (Portable)</title>
+    <authors>NetEase Inc</authors>
+    <projectUrl>https://airtest.netease.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/fa6b2288d40bb748eef08ab9b67fd9fb588fec3e/.github/airtest-ide/icons/airtest_128.png</iconUrl>
+    <copyright>Copyright (c) 2018 NetEase, Inc</copyright>
+    <licenseUrl>https://github.com/AirtestProject/Airtest/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/AirtestProject/Airtest</projectSourceUrl>
+    <docsUrl>https://airtest.doc.io.netease.com/en/</docsUrl>
+    <bugTrackerUrl>https://github.com/AirtestProject/Airtest/issues</bugTrackerUrl>
+    <tags>airtest-ide airtest ide poco pocoui poco-ui selenium automatisation test python</tags>
+    <summary>Cross platform UI automation IDE</summary>
+    <description># Airtest IDE (Portable)
+### About 
+* **Airtest** - is an Cross-Platform UI Automation Framework for Games and Apps.
+* **AirtestIDE** - is an out of the box GUI tool that helps to create and run cases in a user-friendly way. AirtestIDE supports a complete automation workflow: `create, run, report`.
+# Features
+*   **Write Once, Run Anywhere:** Airtest provides cross-platform APIs, including app installation, simulated input, assertion and so forth. Airtest uses image recognition technology to locate UI elements so that you can automate games and apps without injecting any code. 
+*   **Fully Scalable:** Airtest cases can be easily run on large device farms, using commandline or python API. HTML reports with detailed info and screen recording allow you to quickly locate failure points. NetEase builds Airlab on top of the Airtest Project.
+*   **Poco:** Poco adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
+## Game Test
+With image recognition and UI hierarchy, our automation framework support game testing.
+- Supports all game engines and apps
+- Multiplatform
+- Easy to use
+## Android native apps
+In Android native apps testing process, Airtest can play a siginificant role - plug-and-play.
+## Windows applications
+Support for Windows applications, write one code and run the it across the platforms.
+## iOS Support
+With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient.
+## Selenium Plugin
+Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element.
+# Documentation
+You can find the complete Airtest documentation on readthedocs.
+    </description>
+    <releaseNotes># V1.2.10.20210621
+## Release Date: 2021-06-21
+
+## New Features
+- Added image recognition algorithm mstpl. If you use the local python environment, please run pip install -U airtest to update to the latest version. This algorithm improves the accuracy of image recognition
+- Some changes have been made to the image editor
+- We will provide methods on how to adjust related parameters in subsequent documents to better improve the image recognition effect
+- After updating to the latest version of AirtestIDE and the latest version of Airtest, you can no longer need to check the device connection option
+- For example, when the simulator is connected, you need to check the use Javacap option, now you only need to connect directly
+- Please try not to check the option in the drop-down menu before AirtestIDE connects to the phone
+- The parameter cap_method=MINICAP_STREAM is deleted, please do not pass in MINICAP_STREAM when the script is running
+- The current support of Android12 is relatively poor, and the image display speed is very slow, please be patient and wait for the update
+- Airtest is updated to version 1.2.0, please check the document for specific changes:Airtest#1.2.0
+- If you see this, welcome to click star for us on github :)   
+
+## Bug Fixes
+- Fixed the problem that the memory would continue to increase after plugging and unplugging the phone in version 1.2.9
+- Fixed the problem that the screen image is displayed incorrectly when some models are in landscape mode
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -35,3 +35,4 @@
     * added `1.0.1.0` version of `atlassian-downloader`
 	* fixed `1.2.4.20200716` version of `airtest-ide`
 	* fixed `1.2.15.20230404` version of `airtest-ide`
+	* added `1.2.8.20210223` version of `airtest-ide`

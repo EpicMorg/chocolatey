@@ -2,22 +2,22 @@
 $chocoRootBin = Join-Path $($env:ChocolateyInstall) 'bin'
 $ErrorActionPreference = 'Stop';
 
-$packageName= 'atlassian-downloader'
-$folderName =  Join-Path $toolsDir 'Atlassian Downloader'
+$packageName= 'airtest-ide'
+$folderName =  Join-Path $toolsDir 'AirtestIDE'
 
 $packageArgs = @{
   packageName   = $packageName
   unzipLocation = $folderName
-  url           = 'https://github.com/EpicMorg/atlassian-downloader/releases/download/1.0.0.9/atlassian-downloader-net6.0-win7-x86.zip' # download url, HTTPS preferred
-  url64bit      = 'https://github.com/EpicMorg/atlassian-downloader/releases/download/1.0.0.9/atlassian-downloader-net6.0-win7-x64.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
+  url           = 'https://top.gdl.netease.com/AirtestIDE_2018-09-05_py3_win32.zip' # download url, HTTPS preferred
+  url64bit      = 'https://top.gdl.netease.com/AirtestIDE_2018-09-05_py3_win64.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
   #file         = $fileLocation
   #fileFullPath = $fileLocation
   #destination   = Join-Path $toolsDir $folderName
 
-  checksum      = '6913B1F472023D15978E33302CC5879A86844EA620FAA14CD9DC97C9EF377295'
+  checksum      = '7355E3BF96C37F467B258A00E173F7CBBFF4D963E4F57FCCAE6F3BE2D16DDEFE'
   checksumType  = 'sha256' #default is md5, can also be sha1, sha256 or sha512
 
-  checksum64    = '1F248739F6FC10A83F33C30DA6F2FE413E0156C126AF488D1B7595B160989A3B'
+  checksum64    = 'D3297D030BCD2B3B02F5AB655C43752225F75D7DAAEAA1315137D92DDAE7CC10'
   checksumType64= 'sha256'
 }
 
@@ -32,14 +32,14 @@ Install-ChocolateyZipPackage @packageArgs
 ################################################################################
 # Install  shortcuts
 ################################################################################
-$atlDwnldrShimm = Join-Path $chocoRootBin 'atlassian-downloader.exe'
-Write-Host "atlDwnldrShimm: $atlDwnldrShimm"
+$airtestShimm = Join-Path $chocoRootBin 'AirtestIDE.exe'
+Write-Host "airtestShimm: $airtestShimm"
 
 $ProgramsPath = [environment]::GetFolderPath([environment+specialfolder]::Programs)
 $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
 
-$shortcutFilePathProgramsPath = Join-Path $ProgramsPath "Atlassian Downloader.lnk"
-$shortcutFilePathDesktopPath = Join-Path $DesktopPath "Atlassian Downloader.lnk"
+$shortcutFilePathProgramsPath = Join-Path $ProgramsPath "AirtestIDE.lnk"
+$shortcutFilePathDesktopPath = Join-Path $DesktopPath "AirtestIDE.lnk"
 
-Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathProgramsPath -targetPath $atlDwnldrShimm
-Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathDesktopPath -targetPath $atlDwnldrShimm
+Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathProgramsPath -targetPath $airtestShimm
+Install-ChocolateyShortcut -shortcutFilePath $shortcutFilePathDesktopPath -targetPath $airtestShimm

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>airtest-ide</id>
+    <version>1.2.5.20200716</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Airtest IDE (Portable)</title>
+    <authors>NetEase Inc</authors>
+    <projectUrl>https://airtest.netease.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/fa6b2288d40bb748eef08ab9b67fd9fb588fec3e/.github/airtest-ide/icons/airtest_128.png</iconUrl>
+    <copyright>Copyright (c) 2018 NetEase, Inc</copyright>
+    <licenseUrl>https://github.com/AirtestProject/Airtest/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/AirtestProject/Airtest</projectSourceUrl>
+    <docsUrl>https://airtest.doc.io.netease.com/en/</docsUrl>
+    <bugTrackerUrl>https://github.com/AirtestProject/Airtest/issues</bugTrackerUrl>
+    <tags>airtest-ide airtest ide poco pocoui poco-ui selenium automatisation test python</tags>
+    <summary>Cross platform UI automation IDE</summary>
+    <description># Airtest IDE (Portable)
+### About 
+* **Airtest** - is an Cross-Platform UI Automation Framework for Games and Apps.
+* **AirtestIDE** - is an out of the box GUI tool that helps to create and run cases in a user-friendly way. AirtestIDE supports a complete automation workflow: `create, run, report`.
+# Features
+*   **Write Once, Run Anywhere:** Airtest provides cross-platform APIs, including app installation, simulated input, assertion and so forth. Airtest uses image recognition technology to locate UI elements so that you can automate games and apps without injecting any code. 
+*   **Fully Scalable:** Airtest cases can be easily run on large device farms, using commandline or python API. HTML reports with detailed info and screen recording allow you to quickly locate failure points. NetEase builds Airlab on top of the Airtest Project.
+*   **Poco:** Poco adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
+## Game Test
+With image recognition and UI hierarchy, our automation framework support game testing.
+- Supports all game engines and apps
+- Multiplatform
+- Easy to use
+## Android native apps
+In Android native apps testing process, Airtest can play a siginificant role - plug-and-play.
+## Windows applications
+Support for Windows applications, write one code and run the it across the platforms.
+## iOS Support
+With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient.
+## Selenium Plugin
+Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element.
+# Documentation
+You can find the complete Airtest documentation on readthedocs.
+    </description>
+    <releaseNotes># V1.2.5.20200716
+## Release Date: 2020-07-16
+
+## New Features
+- Airtest has been updated to version 1.1.4, and the calling method of interface swipe_along/pinch/two_finger_swipe has been modified. Xcode support has been updated to version 11.5 and iOS version has been supported to 13.5. Please check the update log for details: Airtest#1.1.4
+- Added automatic update function of AirtestIDE.
+- Optimized the search function of the script editing window.
+- Slightly optimized log level filtering function.
+- Right-click to run the selected code function, if there is a poco statement, it will try to initialize a poco object according to the current poco mode, which is more convenient to run.
+- AirtestIDE does not provide an Ubuntu version for this update. You can write scripts on other platforms, and then deploy a Python environment to run on Ubuntu.
+
+## Bug Fixes
+- Fixed a bug where some phones might fail to tap the screen in ADB TOUCH mode.
+- Fixed a bug that might be triggered when the script is saved as.
+- Fixed the horizontal screen abnormality of some iOS models and increase the speed of starting applications.
+- After Android Poco chooses Stop, it will no longer be forced to continuously restart the poco-service process.
+- Fixed a bug where the custom launcher.py path cannot be too long.
+- Fixed an issue where the state of the auto-record button was incorrect when disconnected and connected to the phone, and a function to automatically record and insert a set_current statement when switching phones was added.
+- When using custom python.exe, the log of the print statement can be printed correctly in order.
+- Fixed the problem that setting the Chinese log path under the mac will cause an error in report generation.
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

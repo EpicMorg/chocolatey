@@ -8,17 +8,17 @@ $folderName =  Join-Path $toolsDir 'AirtestIDE'
 $packageArgs = @{
   packageName   = $packageName
   unzipLocation = $folderName
-  url           = 'https://top.gdl.netease.com/AirtestIDE_2018-05-22_18.zip' # download url, HTTPS preferred
-  #url64bit      = 'https://top.gdl.netease.com/AirtestIDE_2018-05-22_18.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
+  url           = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.15.zip' # download url, HTTPS preferred
+  url64bit      = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.15.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
   #file         = $fileLocation
   #fileFullPath = $fileLocation
   #destination   = Join-Path $toolsDir $folderName
 
-  checksum      = '2CF4C8DA42D3D49AB3CE2616A255F95168065F820AFF850AA77B177E1C86680F'
-  checksumType  = 'sha256' #default is md5, can also be sha1, sha256 or sha512
+  checksum      = '23B26D570ED2A0E230C5EF1FFE41B78AE3CE83FF7022E3BBE515D84477D606A681F2721BCA2DA5918D126CB194AED85AFFCD4AF02A0D9B60EED8419EF1F750C7'
+  checksumType  = 'sha512' #default is md5, can also be sha1, sha256 or sha512
 
-  #checksum64    = '2CF4C8DA42D3D49AB3CE2616A255F95168065F820AFF850AA77B177E1C86680F'
-  #checksumType64= 'sha256'
+  checksum64    = '7242659C320D8BC39E6C66EF0351B3FD0D0A20651E3B61A983CF5D1CD49BC98887B2E274C308B5F1F2D0F3F250190EEFEFEDD58386E3FDDC3E4A4FF8AE944B3F'
+  checksumType64= 'sha512'
 }
 
 $testProcessAdminRights = Test-ProcessAdminRights

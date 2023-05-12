@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>airtest-ide</id>
+    <version>1.0.1.20181011</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Airtest IDE (Portable)</title>
+    <authors>NetEase Inc</authors>
+    <projectUrl>https://airtest.netease.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/fa6b2288d40bb748eef08ab9b67fd9fb588fec3e/.github/airtest-ide/icons/airtest_128.png</iconUrl>
+    <copyright>Copyright (c) 2018 NetEase, Inc</copyright>
+    <licenseUrl>https://github.com/AirtestProject/Airtest/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/AirtestProject/Airtest</projectSourceUrl>
+    <docsUrl>https://airtest.doc.io.netease.com/en/</docsUrl>
+    <bugTrackerUrl>https://github.com/AirtestProject/Airtest/issues</bugTrackerUrl>
+    <tags>airtest-ide airtest ide poco pocoui poco-ui selenium automatisation test python</tags>
+    <summary>Cross platform UI automation IDE</summary>
+    <description># Airtest IDE (Portable)
+### About 
+* **Airtest** - is an Cross-Platform UI Automation Framework for Games and Apps.
+* **AirtestIDE** - is an out of the box GUI tool that helps to create and run cases in a user-friendly way. AirtestIDE supports a complete automation workflow: `create, run, report`.
+# Features
+*   **Write Once, Run Anywhere:** Airtest provides cross-platform APIs, including app installation, simulated input, assertion and so forth. Airtest uses image recognition technology to locate UI elements so that you can automate games and apps without injecting any code. 
+*   **Fully Scalable:** Airtest cases can be easily run on large device farms, using commandline or python API. HTML reports with detailed info and screen recording allow you to quickly locate failure points. NetEase builds Airlab on top of the Airtest Project.
+*   **Poco:** Poco adds the ability to directly access object(UI widget) hierarchy across the major platforms and game engines. It allows writing instructions in Python, to achieve more advanced automation.
+## Game Test
+With image recognition and UI hierarchy, our automation framework support game testing.
+- Supports all game engines and apps
+- Multiplatform
+- Easy to use
+## Android native apps
+In Android native apps testing process, Airtest can play a siginificant role - plug-and-play.
+## Windows applications
+Support for Windows applications, write one code and run the it across the platforms.
+## iOS Support
+With poco, Airtest can access iOS native element and find out their location and attributes, which make iOS testing process easy and convenient.
+## Selenium Plugin
+Base on Chrome Devtools Protocol, record and generate selenium scripts, accurately access web element.
+# Documentation
+You can find the complete Airtest documentation on readthedocs.
+    </description>
+    <releaseNotes># V1.0.1.20181011
+## Release Date: 2018-10-11
+
+## New Features
+- Add cleanup script unused image function.
+- Support for `Android 9`.
+
+## Bug Fixes
+Some missing library files is added to the firebase package.
+- Fix an exception when a device connected failed.
+- Fix bug in IDE when using custom image path failed.
+- Fix the problem with the selenium operation image path in the export report.
+- Fix the abnormal problem displayed by the poco control bounding box text under Mac.
+- Fix the problem that the setting of the Settings drop-down menu under Mac English version is abnormal.
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

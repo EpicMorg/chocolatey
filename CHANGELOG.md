@@ -8,3 +8,6 @@
     
 * `april 2023`
     *  added `1.0.0.9` version of `atlassian-downloader`
+  
+* `may 2023`
+    *  added `1.0.1.0` version of `atlassian-downloader`

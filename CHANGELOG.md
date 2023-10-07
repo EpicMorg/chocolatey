@@ -1,11 +1,18 @@
 ## Changelog
-* `december 2020`
-	* added `0.0.18.20180522` version of `airtest-ide`
-	* added `0.1.0.20180615` version of `airtest-ide`
-	* added `0.1.1.20180619` version of `airtest-ide`
-	* added `0.1.2.20180626` version of `airtest-ide`
-	* added `0.1.3.20180629` version of `airtest-ide`
-    
+* `oct 2023`
+    * added `1.1.0.0` version of `atlassian-downloader`
+	* fixed `1.2.4.20200716` version of `airtest-ide`
+	* added `1.2.11.20210819` version of `airtest-ide`
+	* added `1.2.13.20211230` version of `airtest-ide`
+	* added `1.2.14.20220520` version of `airtest-ide`
+
+* `may 2023`
+    * added `1.0.1.0` version of `atlassian-downloader`
+	* fixed `1.2.15.20230404` version of `airtest-ide`
+	* added `1.2.8.20210223` version of `airtest-ide`
+	* added `1.2.9.20210427` version of `airtest-ide`
+	* added `1.2.10.20210621` version of `airtest-ide`
+
 * `april 2023`
 	* added `0.0.18.20180522` version of `airtest-ide`
 	* added `0.1.0.20180615` version of `airtest-ide`
@@ -30,11 +37,11 @@
 	* added `1.2.7.20210207` version of `airtest-ide`
 	* added `1.2.15.20230404` version of `airtest-ide`
     * added `1.0.0.9` version of `atlassian-downloader`
-  
-* `may 2023`
-    * added `1.0.1.0` version of `atlassian-downloader`
-	* fixed `1.2.4.20200716` version of `airtest-ide`
-	* fixed `1.2.15.20230404` version of `airtest-ide`
-	* added `1.2.8.20210223` version of `airtest-ide`
-	* added `1.2.9.20210427` version of `airtest-ide`
-	* added `1.2.10.20210621` version of `airtest-ide`
+
+* `december 2020`
+	* added `0.0.18.20180522` version of `airtest-ide`
+	* added `0.1.0.20180615` version of `airtest-ide`
+	* added `0.1.1.20180619` version of `airtest-ide`
+	* added `0.1.2.20180626` version of `airtest-ide`
+	* added `0.1.3.20180629` version of `airtest-ide`
+    

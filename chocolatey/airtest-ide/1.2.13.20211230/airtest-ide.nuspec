@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>airtest-ide</id>
-    <version>1.2.15.20230405</version>
+    <version>1.2.13.20211230</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>Airtest IDE (Portable)</title>
@@ -41,29 +41,22 @@ Base on Chrome Devtools Protocol, record and generate selenium scripts, accurate
 # Documentation
 You can find the complete Airtest documentation on readthedocs.
     </description>
-    <releaseNotes># V1.2.15.20230404
-## Release Date: 2023-04-04
-
-## New Features
-- Airtest is updated to 1.2.10.1, and the updates are as follows:
-- Airtest 1.2.7
-- Added device.disconnect() interface
-- Added a lot of assertion statements
-- Modified the application installation interface pm_install
-- Support Android12L
-- Airtest 1.2.8-1.2.9
-- Windows and iOS devices support recording screens using the start_recording interface
-- Improved the compatibility of windows screenshot method
-- Support Android13
-- Airtest 1.2.10.1
-- Update support for https://github.com/AirtestProject/iOS-Tagent, please update airtest and iOS-Tagent at the same time, and deploy the latest version on the phone
-- Poco updated to 1.0.89, and the updates are as follows:
-- Update PocoService.apk to support Android12+
-- Download the iOS-Tagent project: iOS-Tagent
-
-## Bug Fixes
-- 
-
+    <releaseNotes># V1.2.13.20211230
+      ## Release Date: 2021-12-30
+      
+      ## New Features
+      - nAirtest is upgraded to version 1.2.4
+      - nSupport Android 12
+      - nFor more Airtest related changes, please check the document Airtest#1.2.4
+      - nPoco is upgraded to version 1.0.85
+      - nThe hierarchical structure of the UI tree is one more layer, so some controls that could not be crawled before can be captured
+      - nFixed some issues in version 1.0.84
+      - nFor more Pocoui related changes, please check the document Poco#1.0.85
+      - nAdded mobile phone initialization function, which can automatically make some settings for the mobile phone to make it more convenient to automate (only support Chinese system), please check the document for details Device Init
+      - nReimplemented the logic of right-clicking the selected code
+      
+      ## Bug Fixes
+      - none
     </releaseNotes>
   </metadata>
   <files>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>airtest-ide</id>
-    <version>1.2.15.20230405</version>
+    <version>1.2.8.20210223</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>Airtest IDE (Portable)</title>
@@ -41,29 +41,22 @@ Base on Chrome Devtools Protocol, record and generate selenium scripts, accurate
 # Documentation
 You can find the complete Airtest documentation on readthedocs.
     </description>
-    <releaseNotes># V1.2.15.20230404
-## Release Date: 2023-04-04
+    <releaseNotes># V1.2.8.20210223
+## Release Date: 2021-02-23
 
 ## New Features
-- Airtest is updated to 1.2.10.1, and the updates are as follows:
-- Airtest 1.2.7
-- Added device.disconnect() interface
-- Added a lot of assertion statements
-- Modified the application installation interface pm_install
-- Support Android12L
-- Airtest 1.2.8-1.2.9
-- Windows and iOS devices support recording screens using the start_recording interface
-- Improved the compatibility of windows screenshot method
-- Support Android13
-- Airtest 1.2.10.1
-- Update support for https://github.com/AirtestProject/iOS-Tagent, please update airtest and iOS-Tagent at the same time, and deploy the latest version on the phone
-- Poco updated to 1.0.89, and the updates are as follows:
-- Update PocoService.apk to support Android12+
-- Download the iOS-Tagent project: iOS-Tagent
+- Fully iterated the iOS module, currently supports the use of Appium/WebDriverAgent to connect to iOS phones, and supports new versions of xcode and iOS versions
+- Support iOS pop-up window click, some new interfaces have been added, please check the documentation for interface updates: Airtest#1.1.8
+- If you want to connect to an iOS phone in a local python environment, please use pip install -U airtest and pip install -U pocoui to update the local version
+	- Please be careful not to use Python2, the new version is for all changes in iOS and only supports Python3 users
+- Comprehensively improve the stability of iOS connection, it is not easy to disconnect or terminate abnormally when operating and running scripts
+- Fixed the problem that when connecting to iPad in AirtestIDE, if it is not in a vertical screen, there may be a wrong click position and wrong Poco control box selection
+- Fixed the issue that iOS-Poco may not find the node when some devices are not in portrait mode
+- If you see this, welcome to click star for us on github :) `Airtest` and `Poco`
 
 ## Bug Fixes
-- 
-
+- Fixed some problems of the device connection module, we apologize for the inconvenience caused by the previous versions
+- Fixed the error report when selecting windows
     </releaseNotes>
   </metadata>
   <files>

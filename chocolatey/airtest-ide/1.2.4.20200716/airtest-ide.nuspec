@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>airtest-ide</id>
-    <version>1.2.4.20200716</version>
+    <version>1.2.4.20200717</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>Airtest IDE (Portable)</title>
@@ -41,7 +41,7 @@ Base on Chrome Devtools Protocol, record and generate selenium scripts, accurate
 # Documentation
 You can find the complete Airtest documentation on readthedocs.
     </description>
-    <releaseNotes># V1.2.4.20200716
+    <releaseNotes># V1.2.4.20200717
 ## Release Date: 2020-07-16
 
 

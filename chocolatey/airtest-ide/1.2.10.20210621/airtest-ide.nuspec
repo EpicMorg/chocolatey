@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>airtest-ide</id>
-    <version>1.2.15.20230405</version>
+    <version>1.2.10.20210621</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>Airtest IDE (Portable)</title>
@@ -41,29 +41,24 @@ Base on Chrome Devtools Protocol, record and generate selenium scripts, accurate
 # Documentation
 You can find the complete Airtest documentation on readthedocs.
     </description>
-    <releaseNotes># V1.2.15.20230404
-## Release Date: 2023-04-04
+    <releaseNotes># V1.2.10.20210621
+## Release Date: 2021-06-21
 
 ## New Features
-- Airtest is updated to 1.2.10.1, and the updates are as follows:
-- Airtest 1.2.7
-- Added device.disconnect() interface
-- Added a lot of assertion statements
-- Modified the application installation interface pm_install
-- Support Android12L
-- Airtest 1.2.8-1.2.9
-- Windows and iOS devices support recording screens using the start_recording interface
-- Improved the compatibility of windows screenshot method
-- Support Android13
-- Airtest 1.2.10.1
-- Update support for https://github.com/AirtestProject/iOS-Tagent, please update airtest and iOS-Tagent at the same time, and deploy the latest version on the phone
-- Poco updated to 1.0.89, and the updates are as follows:
-- Update PocoService.apk to support Android12+
-- Download the iOS-Tagent project: iOS-Tagent
+- Added image recognition algorithm mstpl. If you use the local python environment, please run pip install -U airtest to update to the latest version. This algorithm improves the accuracy of image recognition
+- Some changes have been made to the image editor
+- We will provide methods on how to adjust related parameters in subsequent documents to better improve the image recognition effect
+- After updating to the latest version of AirtestIDE and the latest version of Airtest, you can no longer need to check the device connection option
+- For example, when the simulator is connected, you need to check the use Javacap option, now you only need to connect directly
+- Please try not to check the option in the drop-down menu before AirtestIDE connects to the phone
+- The parameter cap_method=MINICAP_STREAM is deleted, please do not pass in MINICAP_STREAM when the script is running
+- The current support of Android12 is relatively poor, and the image display speed is very slow, please be patient and wait for the update
+- Airtest is updated to version 1.2.0, please check the document for specific changes:Airtest#1.2.0
+- If you see this, welcome to click star for us on github :)   
 
 ## Bug Fixes
-- 
-
+- Fixed the problem that the memory would continue to increase after plugging and unplugging the phone in version 1.2.9
+- Fixed the problem that the screen image is displayed incorrectly when some models are in landscape mode
     </releaseNotes>
   </metadata>
   <files>

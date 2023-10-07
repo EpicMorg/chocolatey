@@ -8,16 +8,16 @@ $folderName =  Join-Path $toolsDir 'AirtestIDE'
 $packageArgs = @{
   packageName   = $packageName
   unzipLocation = $folderName
-  url           = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.4.zip' # download url, HTTPS preferred
-  url64bit      = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.4.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
+  url           = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.14.zip' # download url, HTTPS preferred
+  url64bit      = 'https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.14.zip' # 64bit URL here (HTTPS preferred) or remove - if installer contains both (very rare), use $url
   #file         = $fileLocation
   #fileFullPath = $fileLocation
   #destination   = Join-Path $toolsDir $folderName
 
-  checksum      = '72913C3D58C3B0C6A417BBA876E1B1944E9F98D0F636F1BA805A2DC51A90F0CB'
+  checksum      = 'D2A83DDD7E60E2EA14D78FFE9B43A165774B597BECD4DA33821473A5879BB64F'
   checksumType  = 'sha256' #default is md5, can also be sha1, sha256 or sha512
 
-  checksum64    = '3159C5DF0661FD5814E90C196CB6F8EBE0C3769B05E298D7344BBC7523EF0821'
+  checksum64    = '54A94AF683520E063C7006586E5855D28CCF12717410EB3764648D5FC1A7063F'
   checksumType64= 'sha256'
 }
 

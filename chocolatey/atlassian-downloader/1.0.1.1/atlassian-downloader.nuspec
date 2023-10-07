@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>atlassian-downloader</id>
+    <version>1.0.1.1</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Atlassian Downloader (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/atlassian-downloader</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/atlassian-downloader/ba53e09a25639211bdd79d15dca09fd4162614c2/docs/favicon.png</iconUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/atlassian-downloader/blob/master/LICENSE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/atlassian-downloader</projectSourceUrl>
+    <docsUrl>https://github.com/EpicMorg/atlassian-downloader/</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/atlassian-downloader/issues</bugTrackerUrl>
+    <tags>atlassian jira confluence bitbucket bamboo  clover crowd crucible fisheye sourcetree downloader</tags>
+    <summary>Console app for legally downloading all avalible products from Atlassian.</summary>
+    <description># Atlassian Downloader (Portable)
+
+**Atlassian Downloader** - console app for legally downloading all avalible products from Atlassian.
+
+![Atlassian Downloader](https://rawcdn.githack.com/EpicMorg/atlassian-downloader/87f1d7fd4e3f22b29b4be87d02d80dd0b3e0280e/.github/media/screenshot-01.png)
+![Atlassian Downloader](https://rawcdn.githack.com/EpicMorg/atlassian-downloader/87f1d7fd4e3f22b29b4be87d02d80dd0b3e0280e/.github/media/screenshot-03.png)
+
+## Requerments
+1. Preinstalled`*` `dotnet6`. Download [here](https://dotnet.microsoft.com/download/dotnet/6.0).
+2. Supported OS: `win32/win64`, `linux`, `macosx`, `arm/arm64`
+
+`*` since version `1.0.0.4` application build asstandalone package and do not requre preinstalled `dotnet6`.
+
+# How to...
+## ..bootstrap from scratch
+1. `git clone` this repo.
+2. `cd` to `repo/src`.
+3.1 execute `dotnet run` in `src` folder.
+or
+3.2 execute `build.bat(sh)` in `src` folder.
+4. by default all data will be downloaded to `src/atlassian` folder and subfolders.
+
+## ..install
+1. download latest [![Downloads](https://img.shields.io/github/downloads/EpicMorg/atlassian-downloader/total.svg?style=flat-square)](https://github.com/EpicMorg/atlassian-downloader/releases) [![Release](https://img.shields.io/github/v/release/EpicMorg/atlassian-downloader?style=flat-square)](https://github.com/EpicMorg/atlassian-downloader/releases)
+2. ...
+3. profit!
+
+# Usage and settings
+
+# Usage and settings
+## CLI args
+
+![Atlassian Downloader](https://rawcdn.githack.com/EpicMorg/atlassian-downloader/87f1d7fd4e3f22b29b4be87d02d80dd0b3e0280e/.github/media/screenshot-02.png)
+
+## Example of usage:
+
+### How to download it all at first time, or get update of local archive
+```
+PS# .\atlassian-downloader.exe --output-dir "P:\Atlassian"
+or
+bash# ./atlassian-downloader --output-dir "/mnt/nfs/atlassian"
+```
+If you already have some folders at output path - they will be ignored and not be downloaded again and skipped. Downloader will be download only new versions of files which not be present locally yet.
+
+### Set only some url feed and dowload it:
+```
+PS# .\atlassian-downloader.exe --output-dir "P:\Atlassian" --custom-feed https://my.atlassian.com/download/feeds/current/bamboo.json
+or
+bash# ./atlassian-downloader --output-dir "/mnt/nfs/atlassian" --custom-feed https://my.atlassian.com/download/feeds/current/bamboo.json
+```
+
+### cron or crontab example
+``` 
+0 0 * 1 0 /opt/epicmorg/atlassian-downloader/atlassian-downloader  --output-dir "/mnt/nfs/atlassian"
+```
+### Show only urls from jsons
+```
+PS# .\atlassian-downloader.exe --action ListURLs
+or
+bash# ./atlassian-downloader --action ListURLs
+```
+
+### Supported console themes
+The following built-in themes are available, provided by `Serilog.Sinks.Console` package:
+
+ * `ConsoleTheme.None` - no styling
+ * `SystemConsoleTheme.Literate` - styled to replicate _Serilog.Sinks.Literate_, using the `System.Console` coloring modes supported on all Windows/.NET targets; **this is the default when no theme is specified**
+ * `SystemConsoleTheme.Grayscale` - a theme using only shades of gray, white, and black
+ * `AnsiConsoleTheme.Literate` - an ANSI 16-color version of the "literate" theme; we expect to update this to use 256-colors for a more refined look in future
+ * `AnsiConsoleTheme.Grayscale` - an ANSI 256-color version of the "grayscale" theme
+ * `AnsiConsoleTheme.Code` - an ANSI 256-color Visual Studio Code-inspired theme
+
+# Supported Log Levels
+
+![screenshot](https://rawcdn.githack.com/EpicMorg/atlassian-downloader/ba53e09a25639211bdd79d15dca09fd4162614c2/docs/logging.png)
+
+# Supported products:
+![screenshot](https://rawcdn.githack.com/EpicMorg/atlassian-downloader/c1d586363dab8b55c4947c368e0cb6f5e116f795/docs/products.png)
+
+    </description>
+    <releaseNotes># 1.0.1.1
+## Release Date: 2023-07-21
+
+* `1.0.1.1` - minor update: added `UserAgent` to HTTP headers and added mirrors of json files.
+
+![screenshot-01](https://user-images.githubusercontent.com/1307229/191777729-a96badd5-9bd7-4791-8503-8254f29fefbd.png)
+![screenshot-02](https://user-images.githubusercontent.com/1307229/191777732-d76233dd-0b49-4259-a211-394eaff2e6cf.png)
+![screenshot-03](https://user-images.githubusercontent.com/1307229/191777736-16e5003e-c724-4e6e-b92d-43372512f1e3.png)
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,4 +1,6 @@
 ## Changelog
+* `feb 2024`
+  * added support of `winbox` packages. special thanks to [@qzo](https://github.com/qzo) with [original package](https://github.com/qzo/chocolatey-packages)!
 * `oct 2023`
     * added `1.1.0.0` version of `atlassian-downloader`
 	* fixed `1.2.4.20200716` version of `airtest-ide`

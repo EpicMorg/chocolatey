@@ -17,15 +17,15 @@ Note: WinBox is obviously freeware, but no details about the license are availab
     <projectUrl>http://www.mikrotik.com/download</projectUrl>
     <tags>winbox mikrotik network router routeros administration management</tags>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.rawgit.com/qzo/chocolatey-packages/6f15cdf317a74ec143a2d6400ad4790b23d54fd8/icons/winbox.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/f8e2efbdaf21a31769957241cd22a714e6d4159a/.github/winbox/icon.png</iconUrl>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <docsUrl>http://wiki.mikrotik.com/wiki/Manual:Winbox</docsUrl>
-    <releaseNotes># WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=195839)
+    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=195839)
 
-      ## What's new in v3.38:
-            * fixed connecting to wireless network from QuickSet when there was no password specified;
-            * fixed date and time value representation in the User Manager;
-            * fixed skin file reading;
+### What's new in v3.38:
+* fixed connecting to wireless network from QuickSet when there was no password specified;
+* fixed date and time value representation in the User Manager;
+* fixed skin file reading;
     </releaseNotes>
   </metadata>
   <files>

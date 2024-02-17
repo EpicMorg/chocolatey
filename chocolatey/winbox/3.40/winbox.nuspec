@@ -17,14 +17,14 @@ Note: WinBox is obviously freeware, but no details about the license are availab
     <projectUrl>http://www.mikrotik.com/download</projectUrl>
     <tags>winbox mikrotik network router routeros administration management</tags>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.rawgit.com/qzo/chocolatey-packages/6f15cdf317a74ec143a2d6400ad4790b23d54fd8/icons/winbox.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/f8e2efbdaf21a31769957241cd22a714e6d4159a/.github/winbox/icon.png</iconUrl>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <docsUrl>http://wiki.mikrotik.com/wiki/Manual:Winbox</docsUrl>
-    <releaseNotes># WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=200431)
+    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=200431)
 
-      ## What's new in v3.40:
-      * fit BTH QR code into default settings window;
-      * fixed WinBox upgrade procedure (introduced in v3.39);
+### What's new in v3.40:
+* fit BTH QR code into default settings window;
+* fixed WinBox upgrade procedure (introduced in v3.39);
     </releaseNotes>
   </metadata>
   <files>

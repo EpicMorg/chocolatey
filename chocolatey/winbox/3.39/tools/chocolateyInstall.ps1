@@ -1,7 +1,7 @@
 ﻿$packageName = 'winbox'
 $appName = 'WinBox'
-$url32 = 'https://download.mikrotik.com/winbox/3.39/winbox.exe'
-$url64 = 'https://download.mikrotik.com/winbox/3.39/winbox64.exe'
+$url32 = 'https://download.mikrotik.com/routeros/winbox/3.39/winbox.exe'
+$url64 = 'https://download.mikrotik.com/routeros/winbox/3.39/winbox64.exe'
 $dir = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
 $is64 = ((Get-ProcessorBits 64) -and !$env:chocolateyForceX86)
 $processName32 = 'winbox'

@@ -5,7 +5,7 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>winbox</id>
     <title>WinBox</title>
-    <version>3.38</version>
+    <version>3.38.04062024</version>
     <authors>MikroTik</authors>
     <owners>qzo</owners>
     <summary>WinBox is a small utility that allows administration of Mikrotik RouterOS using a fast and simple GUI.</summary>

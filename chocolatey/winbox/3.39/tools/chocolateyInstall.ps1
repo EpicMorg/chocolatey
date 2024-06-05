@@ -1,4 +1,4 @@
-﻿$packageName = 'winbox'
+$packageName = 'winbox'
 $appName = 'WinBox'
 $url32 = 'https://download.mikrotik.com/routeros/winbox/3.39/winbox.exe'
 $url64 = 'https://download.mikrotik.com/routeros/winbox/3.39/winbox64.exe'
@@ -10,7 +10,7 @@ $processName = If ($is64) { $processName64 } Else { $processName32 }
 $exe = $processName + '.exe'
 $fullPath = Join-Path -Path $dir -ChildPath $exe
 $checksum32 = '6e49a05b71cae8764847713453bab18f9fb5af1b998c9f2df29793e05e0114cd'
-$checksum64 = '6e49a05b71cae8764847713453bab18f9fb5af1b998c9f2df29793e05e0114cd'
+$checksum64 = '475ff5996ad6558f2966eb26129e167d48105105b0e4d5e44b8c4d57f6a84627'
 $checksumType = 'sha256'
 
 $startFolder = $appName

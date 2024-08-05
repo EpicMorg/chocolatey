@@ -1,4 +1,10 @@
 ## Changelog
+* `aug 2024`
+  * added new `winbox 3.41` package.
+  * added new `atlassian-downloader 2.0.0.2` package.
+  * updated `changelog.md` :D
+* `jun 2024`
+  * fixes links of `winbox` packages.
 * `feb 2024`
   * added support of `winbox` packages. special thanks to [@qzo](https://github.com/qzo) with [original package](https://github.com/qzo/chocolatey-packages)!
 * `oct 2023`

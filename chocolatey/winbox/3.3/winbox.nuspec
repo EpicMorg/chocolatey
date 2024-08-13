@@ -20,7 +20,7 @@ Note: WinBox is obviously freeware, but no details about the license are availab
     <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/f8e2efbdaf21a31769957241cd22a714e6d4159a/.github/winbox/icon.png</iconUrl>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <docsUrl>http://wiki.mikrotik.com/wiki/Manual:Winbox</docsUrl>
-    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=104320)
+    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=105799)
 
 ### What's new in v3.3:
 * added back 'Exit' button;

@@ -5,7 +5,7 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>winbox</id>
     <title>WinBox</title>
-    <version>3.2.20240813</version>
+    <version>3.4.20240813</version>
     <authors>MikroTik</authors>
     <owners>qzo</owners>
     <summary>WinBox is a small utility that allows administration of Mikrotik RouterOS using a fast and simple GUI.</summary>
@@ -20,15 +20,13 @@ Note: WinBox is obviously freeware, but no details about the license are availab
     <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/f8e2efbdaf21a31769957241cd22a714e6d4159a/.github/winbox/icon.png</iconUrl>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <docsUrl>http://wiki.mikrotik.com/wiki/Manual:Winbox</docsUrl>
-    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=105658)
+    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/viewtopic.php?t=106142)
 
-### What's new in v3.2:
-* added Close All Windows to Session menu;
-* added New Session command to reset all session info;
-* move Exit command to Session menu and make it exit winbox;
-* added Disconnect command under Session menu that returns to connect window;
-* fixed problem where firewall rule numbers went out of sync when somebody else was moving them around;
-* support new Romon policy (introduced in RouterOS v6.35).
+      ### What's new in v3.4:
+      * added support for RouterOS v6.35;
+      * added Upload button to Files List (for now only button);
+      * added Download action to files context menu;
+      * remember router note in reconnect window;
     </releaseNotes>
   </metadata>
   <files>

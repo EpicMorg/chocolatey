@@ -103,10 +103,12 @@ The following built-in themes are available, provided by `Serilog.Sinks.Console`
     <releaseNotes># 2.0.0.6
 ## Release Date: 2025-10-25
 
-* `2.0.0.6` - technical update
-    * backported shim-fix for choco runs,
-    * updated libs.
-	
+* `2.0.0.7` - technical update:
+    * added delays
+    * added randomazin useragents
+    * updated libs
+    * switched to `dotnet10`
+
 ![screenshot-01](https://user-images.githubusercontent.com/1307229/191777729-a96badd5-9bd7-4791-8503-8254f29fefbd.png)
 ![screenshot-02](https://user-images.githubusercontent.com/1307229/191777732-d76233dd-0b49-4259-a211-394eaff2e6cf.png)
 ![screenshot-03](https://user-images.githubusercontent.com/1307229/191777736-16e5003e-c724-4e6e-b92d-43372512f1e3.png)

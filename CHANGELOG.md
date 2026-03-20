@@ -1,4 +1,8 @@
 ## Changelog
+* `2025-2026`
+  * added new `winbox`-es packages.
+  * added new `airtest-ide`-es packages.
+  * added new `atlassian-downloader`-es packages.
 * `aug 2024`
   * added new `winbox 3.41` package.
   * added new `atlassian-downloader 2.0.0.2` package.

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>winbox</id>
+    <title>WinBox</title>
+    <version>4.0.1.20260320</version>
+    <authors>MikroTik</authors>
+    <owners>qzo</owners>
+    <summary>WinBox is a small utility that allows administration of Mikrotik RouterOS using a fast and simple GUI.</summary>
+    <description>WinBox is a small utility that allows administration of Mikrotik RouterOS using a fast and simple GUI. It is a native Win32 binary, but can be run on Linux and Mac OSX using Wine.
+
+All WinBox interface functions are as close as possible to Console functions. Some of advanced and system critical configurations are not possible from WinBox, like MAC address change on an interface.
+
+Note: WinBox is obviously freeware, but no details about the license are available either on the application website or in the application itself.</description>
+    <projectUrl>http://www.mikrotik.com/download</projectUrl>
+    <tags>winbox mikrotik network router routeros administration management</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/f8e2efbdaf21a31769957241cd22a714e6d4159a/.github/winbox/icon.png</iconUrl>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <docsUrl>http://wiki.mikrotik.com/wiki/Manual:Winbox</docsUrl>
+    <releaseNotes>## WinBox - [Changelog](https://forum.mikrotik.com/t/winbox-v4-0-1-released/268595)
+
+### What's new in v4.0.1:
+* table: fixed a visual issue in tables with tree structure where last element is collapsed;
+
+### What's new in WinBox 4:
+
+* WinBox is now cross-platform and available on Windows, Linux, and macOS;
+* completely redesigned the login panel, tables, forms, buttons, and overall UI layout;
+* added custom font selection and font weight/spacing configuration;
+* added dark mode support;
+* added fast window overview and switching Alt+S, Alt+A (similar to OS task switching);
+* added full screen support;
+* added global menu search support Alt+F;
+* added more UI zoom levels and support UI spacing adjustments;
+* added new terminal shortcut Alt+T;
+* added support for connecting to multiple devices directly from the login panel's neighbor table;
+* added table spacing, separator, comment column order configuration features;
+* added Workspaces for faster window management;
+* always use single window (no more OS popup clutter);
+* form: combo boxes now show extra information (flags, icons, comments, errors);
+* form: real-time field validation and error reporting;
+* form: support more field types;
+* form: support opening multiple tabs using Shift + left-click;
+* standardized text encoding to UTF-8 across the applications;
+* table: added tree structure collapse/expand feature;
+* table: more efficient File window;
+* table: resize column width to content on double click;
+* table: support customizing visible window tabs;
+* table: support freezing cell updates on all tables;
+* table: support more than 2 column sorting;
+* table: support opening multiple table windows;
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\*.*" target="tools" exclude="**\*.swp;**\*~;**\*.php" />
+  </files>
+</package>

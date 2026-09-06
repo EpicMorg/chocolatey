@@ -1,0 +1,52 @@
+## WinBox - [Changelog](https://forum.mikrotik.com/t/winbox-4-2-is-released/271539)
+
+### What's new in 4.2 (2026-Jul-08 10:31):
+
+* app: auto decrypt Saved address file in new window if parent window already provided it;
+* form: add option to open linked objects for some read-only optional fields;
+* form: add support for dynamic column re-layout when resizing window;
+* form: allow mouse select a warning text;
+* form: calculate window width of query panel by also considering table width;
+* form: do not show table duplicates in enum shortcut/extras popup;
+* form: fix autostart of some opened action windows;
+* form: fix file picker field state update (changed/error);
+* form: fix query panel getting data immediately if there is no start command;
+* form: fix slow user interface when combobox has huge amount of dynamic data;
+* form: fix some combobox sorting as requested by RouterOS;
+* form: improve load performance if data contains large amount of multi-array rows;
+* form: separate combobox visually and sort items separately from different enum sources;
+* login,romon: fix connect in new window;
+* login,romon: fix visual bug showing "Error: Object doesn't exist" while connecting to slow device;
+* login,romon: show a clearer error when username/password wrong;
+* login: download RouterOS index files sequentially to make login process more stable;
+* login: select all text in "Connect To" field when opening WinBox;
+* login: try to ignore all RouterOS WinBox file parsing errors and connect to RouterOS anyway;
+* settings: change default row padding value from 4 to 3 (affects only new winbox installs);
+* skins: fix crash when field references other fields from hidden table;
+* table: add Ctrl(CMD)+E to enable and Ctrl(CMD)+Shift+E shortcuts to disable selected rows;
+* table: add Insert and Ctrl(CMD)+N shortcuts to add new item;
+* table: add support for cells with colored text by condition;
+* table: add support to configure comment column/header type in each table;
+* table: allow up/down keyboard navigation when there is no current row focus;
+* table: correctly calculate default flags column width if there are combined flags;
+* table: fix column sorting in rare cases;
+* table: fix some buttons to be correctly under Actions group;
+* table: hide live/pause button in Torch type windows (e.g. Profile/Ping) and Saved routers table;
+* table: improve performance of table's quick filter with many records;
+* table: improve performance when scrolling;
+* table: remove selection/checkbox column;
+* table: show field postfix in column header if available;
+* terminal: add support for mouse scroll in script editor;
+* terminal: fix Enter key located on Numpad for macOS;
+* ui: add progress bar support for number based fields in form and table;
+* ui: add settings info that table has end/home/pageup/pagedown shortcuts;
+* ui: fix "Wireless Snooper" table cell values;
+* ui: fix to show only 1 confirmation dialog if action performed on multiple items;
+* ui: make form background a little lighter in light mode;
+* ui: make popup background same as form in darkmode;
+* ui: make workspace Name field read only after it is added;
+* ui: scale context menu width according to zoom;
+* ui: show info that RouterOS update is available;
+* windows: update certificate for Windows executable signing;
+* add new field type support used by future RouterOS version;
+* update Documentation link in About window;

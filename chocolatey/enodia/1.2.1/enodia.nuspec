@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>enodia</id>
+    <version>1.2.1</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Enodia (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://enodia.sh</projectUrl>
+    <iconUrl>https://enodia.sh/logo.png</iconUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/enodia/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/enodia</projectSourceUrl>
+    <docsUrl>https://docs.enodia.sh</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/enodia/issues</bugTrackerUrl>
+    <tags>eol checker cli end-of-life go golang reporter local service web windows</tags>
+    <summary>You describe your services once. Enodia handles the rest.</summary>
+    <description># Enodia (Portable)
+## What it does
+
+```
+Know what you are running, and how long it has left.
+
+          ░░
+         ▒██▒
+        ▓████▓
+  ▓    ▓██████▓    ▓
+ ▓█▓░  ▒██████▒  ░▓█▓
+ ██████▓▒▓██▓▒▓██████
+ ▒███████▓▒▒▓███████▒
+  ░▒▓█████░░█████▓▒░
+        ▒████▒
+          ██
+          ▒▒
+
+█▀▀ █▄ █ █▀█ █▀▄ █ ▄▀█
+██▄ █ ▀█ █▄█ █▄▀ █ █▀█ asks your deployed services what version they are running, then checks
+
+those versions against vendor lifecycle calendars and tells you what is
+already dead, what is dying, and where your fleet has drifted apart.
+
+You describe your services once. Enodia handles the rest.
+```
+
+    </description>
+    <releaseNotes>## [1.2.1+0] — 2026-09-10
+
+### Fixed
+
+- `p4d`/`p4p` didn't apply `t.Timeout` to the `p4` CLI subprocess they shell
+  out to — every other probe in this tree clamps its network transport to
+  `t.Timeout` before touching the network, and this one didn't. A `p4`
+  process stuck dialing an unreachable direct server (no response, no RST —
+  the exact network behavior D28 already documents) hung indefinitely,
+  stalling an entire collection run. Reported directly from a real hang in
+  production.
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

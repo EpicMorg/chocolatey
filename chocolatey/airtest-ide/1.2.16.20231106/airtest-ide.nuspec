@@ -10,7 +10,7 @@
     <projectUrl>https://airtest.netease.com/</projectUrl>
     <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/fa6b2288d40bb748eef08ab9b67fd9fb588fec3e/.github/airtest-ide/icons/airtest_128.png</iconUrl>
     <copyright>Copyright (c) 2018 NetEase, Inc</copyright>
-    <licenseUrl>https://github.com/AirtestProject/Airtest/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://airtest.netease.com/agreement.html</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/AirtestProject/Airtest</projectSourceUrl>
     <docsUrl>https://airtest.doc.io.netease.com/en/</docsUrl>

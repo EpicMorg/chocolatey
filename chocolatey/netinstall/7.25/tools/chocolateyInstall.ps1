@@ -18,3 +18,13 @@ $packageArgs = @{
 }
 
 Install-ChocolateyZipPackage @packageArgs
+
+# Normalise the command name to `netinstall` on both bitnesses.
+# The x64 archive ships `netinstall64.exe`; rename it so the shim Chocolatey
+# auto-generates after this script is always `netinstall`, matching the x86 build
+# and the winget `PortableCommandAlias: netinstall`.
+$exe64 = Join-Path $toolsDir 'netinstall64.exe'
+$exe32 = Join-Path $toolsDir 'netinstall.exe'
+if (Test-Path $exe64) {
+  Move-Item -Path $exe64 -Destination $exe32 -Force
+}

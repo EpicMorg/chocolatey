@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>enodia</id>
+    <version>2.1.1</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Enodia (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://enodia.sh</projectUrl>
+    <iconUrl>https://enodia.sh/logo.png</iconUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/enodia/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/enodia</projectSourceUrl>
+    <docsUrl>https://docs.enodia.sh</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/enodia/issues</bugTrackerUrl>
+    <tags>eol checker cli end-of-life go golang reporter local service web windows</tags>
+    <summary>You describe your services once. Enodia handles the rest.</summary>
+    <description># Enodia (Portable)
+## What it does
+
+```
+Know what you are running, and how long it has left.
+
+          ░░
+         ▒██▒
+        ▓████▓
+  ▓    ▓██████▓    ▓
+ ▓█▓░  ▒██████▒  ░▓█▓
+ ██████▓▒▓██▓▒▓██████
+ ▒███████▓▒▒▓███████▒
+  ░▒▓█████░░█████▓▒░
+        ▒████▒
+          ██
+          ▒▒
+
+█▀▀ █▄ █ █▀█ █▀▄ █ ▄▀█
+██▄ █ ▀█ █▄█ █▄▀ █ █▀█ asks your deployed services what version they are running, then checks
+
+those versions against vendor lifecycle calendars and tells you what is
+already dead, what is dying, and where your fleet has drifted apart.
+
+You describe your services once. Enodia handles the rest.
+```
+
+    </description>
+    <releaseNotes>## [2.1.1+0] — 2026-10-08
+
+### Fixed
+
+- MariaDB 11.0+ no longer masks its version behind `5.5.5-` (`11.4.9-MariaDB-…`),
+  so `mysql` recorded such servers as MySQL and `mariadb` refused them. Both
+  probes now recognise MariaDB by either shape (D47).
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,23 @@
+VERIFICATION
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+The embedded archive tools\IPMICFG_1.31.0_build.200205.zip is the unmodified official
+IPMICFG 1.31.0 (build 200205) release from Supermicro's download mirror:
+
+  https://www.supermicro.com/wdl/utility/IPMICFG/Previous%20Releases/IPMICFG_1.31.0_build.200205.zip
+
+Supermicro publishes the checksums of its IPMICFG archives in:
+
+  https://www.supermicro.com/wdl/utility/IPMICFG/Previous%20Releases/CheckSum.txt
+
+To verify:
+  1. Download the archive from the URL above (or take tools\IPMICFG_1.31.0_build.200205.zip
+     from this package).
+  2. Get its checksum, e.g. in PowerShell:
+       Get-FileHash -Algorithm SHA256 .\IPMICFG_1.31.0_build.200205.zip
+     or with Chocolatey's checksum tool:
+       checksum -t sha256 -f .\IPMICFG_1.31.0_build.200205.zip
+  3. It must match the SHA-256 listed for IPMICFG_1.31.0_build.200205.zip in Supermicro's CheckSum.txt:
+
+  SHA256: 48ED3679EDF8330CE8C3686DF164D8228EBCF347F01343FE06D54B07E4F98A23

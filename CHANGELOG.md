@@ -1,4 +1,12 @@
 ## Changelog
+* `oct 2026`
+  * fixed `winbox 3.4` package (it downloaded the `3.3` binary).
+  * added new `netinstall` package (`7.25`).
+  * added new `thedude` package (`7.20.5`).
+  * added new `flashfig` package (`7.25`).
+  * adopted and fixed `ipmicfg` (dead `ftp://` download) and backfilled its full version history `1.14.2`–`1.35.1`.
+  * `ipmicfg`: every version now embeds the official Supermicro zip (redistributed with Supermicro's permission, sha256 = Supermicro's CheckSum.txt, see `legal\VERIFICATION.txt`) — Supermicro's download server rejects Chocolatey's verifier with 403, so nothing is downloaded at install time anymore.
+  * added new `enodia` packages `2.1.0`, `2.1.1`, `2.2.0`, `2.2.1`.
 * `2025-2026`
   * added new `winbox`-es packages.
   * added new `airtest-ide`-es packages.

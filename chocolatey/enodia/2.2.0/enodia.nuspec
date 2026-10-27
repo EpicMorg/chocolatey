@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>enodia</id>
+    <version>2.2.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Enodia (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://enodia.sh</projectUrl>
+    <iconUrl>https://enodia.sh/logo.png</iconUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/enodia/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/enodia</projectSourceUrl>
+    <docsUrl>https://docs.enodia.sh</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/enodia/issues</bugTrackerUrl>
+    <tags>eol checker cli end-of-life go golang reporter local service web windows</tags>
+    <summary>You describe your services once. Enodia handles the rest.</summary>
+    <description># Enodia (Portable)
+## What it does
+
+```
+Know what you are running, and how long it has left.
+
+          ░░
+         ▒██▒
+        ▓████▓
+  ▓    ▓██████▓    ▓
+ ▓█▓░  ▒██████▒  ░▓█▓
+ ██████▓▒▓██▓▒▓██████
+ ▒███████▓▒▒▓███████▒
+  ░▒▓█████░░█████▓▒░
+        ▒████▒
+          ██
+          ▒▒
+
+█▀▀ █▄ █ █▀█ █▀▄ █ ▄▀█
+██▄ █ ▀█ █▄█ █▄▀ █ █▀█ asks your deployed services what version they are running, then checks
+
+those versions against vendor lifecycle calendars and tells you what is
+already dead, what is dying, and where your fleet has drifted apart.
+
+You describe your services once. Enodia handles the rest.
+```
+
+    </description>
+    <releaseNotes>## [2.2.0+0] — 2026-10-09
+
+`enodia cve update` downloads the CVE databases itself, vendor security
+pages (MariaDB, Atlassian, PostgreSQL, nginx) join BDU and NVD, CVE
+matching reaches iLO 4, iDRAC and Synology DSM, and 27 new probes land.
+Every new `cve:` key is optional and 2.1 inventories work unchanged. One
+config can stop loading: a credential of a kind its product never sends
+is now an error instead of being dropped silently (D48) — run
+`enodia config validate` before upgrading.
+
+### Added
+
+- `enodia cve update`: downloads the CVE databases every configured
+  `cve.*.path` names — BDU, NVD (this year, last year and missing years;
+  `--all-years`), Debian, OVAL and Alpine (the releases already on disk,
+  those `--from` inventories need, `--oval`/`--alpine`), MariaDB,
+  Atlassian, PostgreSQL (`--postgresql` for per-major pages) and nginx.
+  If-Modified-Since; a download replaces a file only after it loads. TLS
+  is verified against the system roots plus `cve.update.ca_file` and
+  `cve.update.ca_dir`, or not at all with `cve.update.tls_skip_verify`.
+  Every other command still never downloads anything (D73).
+- `splunk` probe: splunkd's management API on 8089 with Basic or a Splunk
+  token (D67).
+- `code-server` probe: `codeServerVersion` from the login page (D66).
+- `phpipam` probe: the login page's footer and asset version (D65).
+- `domainmod` probe: the CHANGELOG in its web root (D65).
+- `netdata` probe: the agent's anonymous `/api/v1/info` (D64).
+- `libretranslate` probe: the public OpenAPI document `/spec` (D64).
+- `torrserver` probe: `/echo` (D64).
+- `kafka` probe: the broker's version over SSH from its own jar, optionally
+  in a container; Confluent Platform builds are reported as `confluent`
+  with the Apache Kafka line they carry (D63).
+- `home-assistant` probe: `/api/config` with a long-lived access token,
+  `kind: bearer` (D62).
+- `openhab` probe: the anonymous REST root `/rest/` (D62).
+- `doxygen` probe: which Doxygen generated a docs site, from its generator
+  mark (D61).
+- `qbittorrent` probe: the Web UI API after a form login, `kind: password`
+  (D61).
+- `netbox` probe: the anonymous login page's `data-netbox-version` (D60).
+- `greenbone` probe (aliases `openvas`, `gsad`): gsad's version from the
+  envelope of its `/gmp` reply, unauthenticated (D60).
+- `posthog` probe: self-hosted PostHog's git commit from its anonymous
+  login page (D59).
+- `uptime-kuma` probe: logs in over Uptime Kuma's socket.io API with a
+  username and password (`kind: password`) and reads the version it sends
+  after login (D58).
+- `wapt` probe: the WAPT server's anonymous `/ping` (D57).
+- `minio` probe: `minio --version` over SSH, optionally in a container;
+  MinIO's `RELEASE.&lt;timestamp&gt;` names now compare as versions (D56).
+- `sentry` probe: self-hosted Sentry's version from its anonymous login
+  page (D55).
+- `zookeeper` probe: the `srvr` four-letter word (D54).
+- `ghost` probe: the anonymous `/ghost/api/admin/site/`, which gives
+  major.minor (D54).
+- `onlyoffice` and `euro-office` probes: ONLYOFFICE Docs and its
+  Euro-Office fork (as shipped for Nextcloud), read anonymously from the
+  document server's `/index.html`; a server of the other brand is refused
+  with the product to use (D53).
+- `weblate` probe: the anonymous "Powered by Weblate" footer, GitHub
+  resolver (D52).
+- `memcached` probe: the text protocol's `version` command, no
+  credentials (D51).
+- `rabbitmq` probe: the management plugin's `/api/overview`, `kind: basic`
+  (D51).
+- `cassandra` probe: `release_version` over the CQL native protocol v4,
+  `kind: password` when the cluster has PasswordAuthenticator (D51).
+- CVEs for `mariadb` targets. BDU and NVD now cover MariaDB, and a new
+  `cve.mariadb.path` reads MariaDB's own fixed-CVE table
+  (`community-server.md`), which knows the fix release per series. Merged
+  with BDU and NVD; where MariaDB's table knows a CVE, its verdict
+  replaces their open-ended ranges, so the latest release of a maintained
+  series is no longer flagged for CVEs fixed only in newer series (D50).
+- CVEs for 24 more products: cassandra, code-server, domainmod, doxygen,
+  ghost, greenbone, home-assistant, kafka, memcached, minio, netbox,
+  netdata, onlyoffice, openhab, pfsense, phpipam, qbittorrent, rabbitmq,
+  sentry, splunk, uptime-kuma, wapt, weblate, zookeeper. MinIO's
+  timestamp versions compare; pfSense CE and Splunk Enterprise skip
+  ranges for other editions; Confluent Kafka builds get no lookup (D68).
+- CVEs for `hp-ilo4`, `dell-idrac` and `synology-dsm`. iDRAC is matched
+  per generation, read from the Redfish model ("13G" is iDRAC8); with no
+  model only iDRAC9's 3.x and later are looked up. DSM compares version,
+  build and Update ("7.2.1-69057-6"); the probe now reports the Update
+  in `Extra["update"]` (D72).
+- `cve.atlassian.path`: Atlassian's own per-release CVE data
+  (vuln-transparency API) for `jira`, `confluence`, `bitbucket` and
+  `bamboo`, third-party dependency CVEs included. Judged within each
+  branch, merged with BDU and NVD; for a release Atlassian lists, its
+  verdict wins (D69).
+- `cve.postgresql.path` and `cve.nginx.path`: the projects' own security
+  pages (HTML, saved as is), with the fix release per branch. Merged with
+  BDU and NVD; where they know a CVE, their verdict wins. Current
+  PostgreSQL 17/16/15/14 releases and nginx 1.30.5 no longer show BDU's
+  branchless ranges (D71).
+- `PRIVACY.md`: what enodia connects to (your targets, endoflife.date,
+  the GitHub API — product and repository names only) and what it stores
+  (only your own files and a local cache). No telemetry.
+
+### Changed
+
+- The `github` resolver skips releases whose tag names a pre-release
+  (`5.3.0.M2`, `2026.10.0b7`, `-rc1`, `-beta.1`) even when GitHub doesn't
+  flag them (D62).
+- The `github` resolver reads underscore-spelled (`Release_1_18_0`) and
+  `release-`-prefixed (`release-5.2.4`) tags as versions (D61).
+- The `github` resolver drops a leading `&lt;repo&gt;-`/`&lt;repo&gt;_` from release
+  tags, so `weblate-2026.10` reads as `2026.10` in LATEST/CYCLE and in the
+  comparison (D52).
+- `teamcity` works without credentials: with none configured it reads the
+  anonymous `/app/rest/server/version`, open on every TeamCity checked from
+  2017.2 to 2026.1 even with guest login off. A token still selects
+  `/app/rest/server` as before (D49).
+
+### Fixed
+
+- `jenkins` CVEs: a fixed LTS release is no longer flagged by the weekly
+  range of the same fix (LTS 2.568.3 by "before 2.580"). Weekly and LTS
+  ranges now apply only to their own release line (D70).
+- The `github` resolver no longer fails on repositories whose releases
+  list is over 1MiB (minio/minio's is 3.4MB): it now reads up to 8MiB
+  (D56).
+- A credential of a kind its product never sends is now a config error
+  instead of being dropped silently. `kind: password` on an HTTP product
+  (RouterOS, Harbor, ...) used to send the request with no `Authorization`
+  header at all; `config validate` now names the kinds the product accepts
+  — for a web login that is `kind: basic` (D48).
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

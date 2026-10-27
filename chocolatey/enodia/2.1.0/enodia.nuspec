@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>enodia</id>
+    <version>2.1.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Enodia (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://enodia.sh</projectUrl>
+    <iconUrl>https://enodia.sh/logo.png</iconUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/enodia/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/enodia</projectSourceUrl>
+    <docsUrl>https://docs.enodia.sh</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/enodia/issues</bugTrackerUrl>
+    <tags>eol checker cli end-of-life go golang reporter local service web windows</tags>
+    <summary>You describe your services once. Enodia handles the rest.</summary>
+    <description># Enodia (Portable)
+## What it does
+
+```
+Know what you are running, and how long it has left.
+
+          ░░
+         ▒██▒
+        ▓████▓
+  ▓    ▓██████▓    ▓
+ ▓█▓░  ▒██████▒  ░▓█▓
+ ██████▓▒▓██▓▒▓██████
+ ▒███████▓▒▒▓███████▒
+  ░▒▓█████░░█████▓▒░
+        ▒████▒
+          ██
+          ▒▒
+
+█▀▀ █▄ █ █▀█ █▀▄ █ ▄▀█
+██▄ █ ▀█ █▄█ █▄▀ █ █▀█ asks your deployed services what version they are running, then checks
+
+those versions against vendor lifecycle calendars and tells you what is
+already dead, what is dying, and where your fleet has drifted apart.
+
+You describe your services once. Enodia handles the rest.
+```
+
+    </description>
+    <releaseNotes>## [2.1.0+0] — 2026-10-01
+
+CVE correlation goes down to installed packages on twelve Linux
+distributions, and six new probes land. Nothing breaks: the new `cve:`
+keys are optional, and inventories only gain optional fields, so 2.0
+configs and inventories work unchanged.
+
+### Added
+
+- **Package-level CVEs for Linux distributions** (D42–D44, D46). D33 left
+  distributions out because a release number can't say which packages are
+  patched; the OS probes now also read the installed packages and the
+  running kernel in their one SSH round trip, and each distribution's own
+  security data is matched per package. Each source is a file the operator
+  downloads, like BDU and NVD:
+  - `cve.debian.path` — the Debian Security Tracker's JSON, for `debian`.
+  - `cve.oval.path` — vendor OVAL files, one per release, for `ubuntu`,
+    `linuxmint` (via its Ubuntu base), `rhel`, `rocky-linux` (against
+    Red Hat's file — Rocky's own is refused as unusable), `almalinux`,
+    `oracle-linux`, `astra-linux` (SE 1.7/1.8) and `redos` (7.3/8.0).
+    Parsed OVAL is cached like BDU and NVD.
+  - `cve.alpine.path` — Alpine's secdb, for `alpine-linux`.
+- Only CVEs that already have a fix newer than what's installed are
+  reported — what an upgrade (and, for the kernel, a reboot) would close.
+  One finding per package, linked to the advisory carrying the fix (USN,
+  RHSA, ALSA, ELSA, Astra bulletin, ROS, Debian/Alpine tracker page), with
+  every CVE folded under it in the HTML report.
+- Matching follows each package manager's own rules: dpkg, rpm and apk
+  version ordering (checked against apt_pkg, rpm and apk-tools on ~4000–
+  5300 real version pairs each), AppStream module streams, Oracle's arch,
+  FIPS and Ksplice variants, and the running kernel rather than whatever
+  kernel packages are installed.
+- Every source was cross-checked against the reference tool on real
+  containers: `oscap oval eval` (Ubuntu 56/56 advisories, RHEL 128/128,
+  AlmaLinux 197/197, Oracle 22/22, Astra 1.7 205/205 CVEs, Astra 1.8 48/48,
+  RED OS 7.3 53/53, RED OS 8.0 60/60), `dnf updateinfo`, python3-apt and
+  `apk version -t`.
+- New probes: `mariadb` (D36), `pfsense` Community Edition over SSH (D37),
+  `supermicro-bmc`, `dell-idrac` and `hp-ilo4` over Redfish (D40), and
+  `freeradius` over SSH, with `options.container` for a FreeRADIUS in
+  Docker or Podman (D45). 96 probes in total.
+- `github-tag-branches` resolver: one lifecycle cycle per major.minor from
+  GitHub tags, for projects maintaining several branches at once
+  (FreeRADIUS 3.0.x and 3.2.x).
+- FreeRADIUS mapped in both NVD and BDU.
+
+### Fixed
+
+- VMware's "8.0 U3k" shorthand now compares equal to "8.0.3" (D38).
+- LATEST/CYCLE columns show cleaned versions for GitHub-resolved products,
+  not the raw tag (`2026.9.1`, not `v2026.9.1`) (D39).
+- `config validate` reports a missing `cve.*.path` file instead of passing
+  and failing later in `check` (D41).
+
+### Notes
+
+- A Proxmox VE host gets package findings as a second, SSH `debian`
+  target next to its API `proxmox` one; Debian's `linux` is only matched
+  against a running Debian kernel, so Proxmox's own kernel isn't
+  mistaken for one.
+- With every source configured at once (BDU, NVD, Debian, eight OVAL
+  files, Alpine) `check` took ~22s cold and ~3.4s warm, peaking at
+  ~0.5–0.6GB — less if `cve.oval.path` holds only the releases you run.
+- The repository's history was rewritten and re-signed to drop internal
+  hostnames; every tag was re-created on the rewritten history. Release
+  binaries up to 2.0.0+0 report commit hashes from before the rewrite.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

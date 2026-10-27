@@ -1,0 +1,8 @@
+IPMICFG is proprietary software of Super Micro Computer, Inc.
+Copyright (c) Super Micro Computer, Inc. All rights reserved.
+
+The archive in tools\ is the official, unmodified IPMICFG release from
+Supermicro. It is redistributed in this package with Supermicro's permission.
+
+Supermicro policies: https://www.supermicro.com/about/policies/index.cfm
+Product page:        https://www.supermicro.com/en/solutions/management-software/ipmi-utilities

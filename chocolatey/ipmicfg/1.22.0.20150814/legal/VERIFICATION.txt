@@ -1,0 +1,23 @@
+VERIFICATION
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+The embedded archive tools\ipmicfg_1.22.0_general_20150814.zip is the unmodified official
+IPMICFG 1.22.0 (build 20150814) release from Supermicro's download mirror:
+
+  https://www.supermicro.com/wdl/utility/IPMICFG/Previous%20Releases/ipmicfg_1.22.0_general_20150814.zip
+
+Supermicro publishes the checksums of its IPMICFG archives in:
+
+  https://www.supermicro.com/wdl/utility/IPMICFG/Previous%20Releases/CheckSum.txt
+
+To verify:
+  1. Download the archive from the URL above (or take tools\ipmicfg_1.22.0_general_20150814.zip
+     from this package).
+  2. Get its checksum, e.g. in PowerShell:
+       Get-FileHash -Algorithm SHA256 .\ipmicfg_1.22.0_general_20150814.zip
+     or with Chocolatey's checksum tool:
+       checksum -t sha256 -f .\ipmicfg_1.22.0_general_20150814.zip
+  3. It must match the SHA-256 listed for ipmicfg_1.22.0_general_20150814.zip in Supermicro's CheckSum.txt:
+
+  SHA256: 953D91F22F42D88E0B6187ED7BBBC35B7B888D3EED1AE6E4924A1668E190250C

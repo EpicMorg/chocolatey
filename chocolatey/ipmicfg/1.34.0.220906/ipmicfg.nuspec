@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ipmicfg</id>
+    <version>1.34.0.220906</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>SuperMicro IPMICFG (Portable)</title>
+    <authors>Super Micro Computer, Inc.</authors>
+    <projectUrl>https://www.supermicro.com/en/solutions/management-software/ipmi-utilities</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/refs/heads/develop/.github/ipmicfg/supermicro.png</iconUrl>
+    <copyright>Copyright (c) Super Micro Computer, Inc.</copyright>
+    <licenseUrl>https://www.supermicro.com/about/policies/index.cfm</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.supermicro.com/wdl/utility/IPMICFG/IPMICFG_UserGuide.pdf</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/chocolatey/issues</bugTrackerUrl>
+    <tags>ipmicfg ipmi supermicro cli bmc fru sel nm</tags>
+    <summary>IPMICFG is an in-band utility for configuring IPMI devices. It is a command line tool providing standard IPMI and Supermicro® proprietary OEM commands.</summary>
+    <description>IPMICFG is an in-band utility for configuring IPMI devices. It is a command line tool providing standard IPMI and Supermicro® proprietary OEM commands. This CLI-based utility can be executed on DOS, Windows, and Linux OS and does not require any installation procedures. This utility is used for BMC/FRU configuration.
+
+IPMICFG Key Features:
+
+  - Set up IPMI IP Address
+  - Set up IPMI Configuration
+  - Configure IPMI User Management
+  - Configure IPMI FRU
+  - Manage System Event Log (SEL)
+  - Manage IPMI by node management (NM) protocol</description>
+    <releaseNotes>IPMICFG 1.34.0 (build 220906). Historical release backfilled by EpicMorg from Supermicro's official mirror over HTTPS; sha256 matches Supermicro's own CheckSum.txt. The official zip is embedded in the package (redistributed with Supermicro's permission); see legal\VERIFICATION.txt.</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="legal\**" target="legal" />
+  </files>
+</package>

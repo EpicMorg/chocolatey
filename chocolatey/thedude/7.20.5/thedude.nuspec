@@ -24,6 +24,7 @@ Some of its features:
 - Supports remote Dude server and local client
 - Runs on Windows and 32 bit Wine</description>
     <projectUrl>https://mikrotik.com/thedude</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/0a098ffdbee39f578992fd6c36fd46083dbea2b3/.github/dude/tool-dude.png</iconUrl>
     <tags>thedude mikrotik network monitoring tool utility routeros management</tags>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://wiki.mikrotik.com/wiki/Manual:The_Dude/License</licenseUrl>

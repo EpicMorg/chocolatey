@@ -15,6 +15,7 @@ In short, the Netinstall procedure goes like this:
 - Connect your PC directly to the boot port (usually Ether1, the port labeled BOOT or as otherwise indicated in the product manual) of the device you will be reinstalling.
 - Turn on the device while holding the reset button until it shows up in the Netinstall tool.</description>
     <projectUrl>https://mikrotik.com/download</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/0a098ffdbee39f578992fd6c36fd46083dbea2b3/.github/netinstall/tool-netinstall.png</iconUrl>
     <tags>netinstall mikrotik routeros tool utility network recovery</tags>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://mikrotik.com/downloadterms.html</licenseUrl>

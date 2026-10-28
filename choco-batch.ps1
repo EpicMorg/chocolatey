@@ -7,7 +7,7 @@
   sorted by version (pre-releases before their release), and runs the given
   actions for each version, in the order given:
 
-    pack       choco pack <nuspec> --out <version dir>
+    pack       choco pack <nuspec> --out <version dir>  (skipped if the nupkg is already there, unless -Force)
     push       choco push --source=https://push.chocolatey.org/ <version dir>\<id>.<ver>.nupkg
     install    choco install <id> --version <ver> from the version dir (+ community feed for dependencies)
     uninstall  choco uninstall <id>
@@ -51,7 +51,8 @@ param(
   # Seconds to wait between pushes.
   [int]$Delay = 0,
 
-  # Pass --force to choco install (reinstall / switch between versions).
+  # pack: rebuild even if the version's nupkg already exists (it is overwritten).
+  # install: pass --force to choco (reinstall / switch between versions).
   [switch]$Force,
 
   # Keep going after a failed command.
@@ -109,6 +110,16 @@ $items = @($items | Sort-Object Numeric, @{ Expression = { [bool]$_.Prerelease }
 if (-not $items) { Write-Warning "No version folders matched under $root."; return }
 Write-Host "$($items.Count) version(s): $($items[0].Version) .. $($items[-1].Version); actions: $($Action -join ', ')" -ForegroundColor Cyan
 
+# The version's nupkg in its folder. choco v2 normalises the file name
+# (7.25 -> 7.25.0), so compare the numeric part and the pre-release tag.
+function Find-Nupkg($i) {
+  Get-ChildItem -LiteralPath $i.Dir -Filter "$($i.Id).*.nupkg" -File | Where-Object {
+    $v = $_.BaseName.Substring($i.Id.Length + 1)
+    $v -match '^\d+(\.\d+){0,3}(-[0-9A-Za-z.-]+)?$' -and
+      (Get-NumericVersion $v) -eq $i.Numeric -and ($v -split '-', 2)[1] -eq $i.Prerelease
+  } | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+}
+
 function Invoke-Choco([string[]]$chocoArgs) {
   Write-Host "> choco $($chocoArgs -join ' ')" -ForegroundColor DarkGray
   if ($WhatIf) { return $true }
@@ -125,13 +136,16 @@ $pushed = 0
     $pre = if ($i.Prerelease) { @('--pre') } else { @() }
     switch ($a) {
       'pack' {
-        $ok = Invoke-Choco @('pack', $i.Nuspec, "--out=$($i.Dir)")
+        $existing = Find-Nupkg $i
+        if ($existing -and -not $Force) {
+          Write-Warning "$($existing.Name) already exists - not repacking (use -Force to overwrite)."
+          $ok = $true
+        } else {
+          $ok = Invoke-Choco @('pack', $i.Nuspec, "--out=$($i.Dir)")
+        }
       }
       'push' {
-        # choco v2 normalises the file name (7.25 -> 7.25.0), so match by id + numeric version.
-        $nupkg = Get-ChildItem -LiteralPath $i.Dir -Filter "$($i.Id).*.nupkg" -File |
-          Where-Object { (Get-NumericVersion ($_.BaseName.Substring($i.Id.Length + 1))) -eq $i.Numeric } |
-          Sort-Object LastWriteTime -Descending | Select-Object -First 1
+        $nupkg = Find-Nupkg $i
         if (-not $nupkg -and -not $WhatIf) {
           Write-Warning "No $($i.Id) nupkg in $($i.Dir) - run pack first."
           $ok = $false

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>netinstall</id>
+    <title>MikroTik Netinstall (Portable)</title>
+    <version>6.24</version>
+    <authors>MikroTik</authors>
+    <owners>epicmorg</owners>
+    <summary>Netinstall is a tool for installing and reinstalling MikroTik devices running RouterOS.</summary>
+    <description>Netinstall is a tool for installing and reinstalling MikroTik devices running RouterOS. Always try using Netinstall if you suspect that your device is not working properly. The tool is available for Windows (with a graphical interface) and for Linux (as a command line tool).
+
+In short, the Netinstall procedure goes like this:
+- Connect your PC directly to the boot port (usually Ether1, the port labeled BOOT or as otherwise indicated in the product manual) of the device you will be reinstalling.
+- Turn on the device while holding the reset button until it shows up in the Netinstall tool.</description>
+    <projectUrl>https://mikrotik.com/download</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/0a098ffdbee39f578992fd6c36fd46083dbea2b3/.github/netinstall/tool-netinstall.png</iconUrl>
+    <tags>netinstall mikrotik routeros tool utility network recovery</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://mikrotik.com/downloadterms.html</licenseUrl>
+    <copyright>Copyright (c) SIA "Mikrotikls"</copyright>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <docsUrl>https://help.mikrotik.com/docs/spaces/ROS/pages/24805390/Netinstall</docsUrl>
+    <releaseNotes>## MikroTik Netinstall 6.24
+
+From download.mikrotik.com (RouterOS 6.24, released 2014-12-23). Portable zip; `netinstall.exe` (x86 only).
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

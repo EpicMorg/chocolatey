@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>thedude</id>
+    <title>The Dude</title>
+    <version>6.47.2</version>
+    <authors>MikroTik</authors>
+    <owners>epicmorg</owners>
+    <summary>The Dude network monitor is an application by MikroTik which can dramatically improve the way you manage your network environment.</summary>
+    <description>The Dude network monitor is a new application by MikroTik which can dramatically improve the way you manage your network environment. It will automatically scan all devices within specified subnets, draw and layout a map of your networks, monitor services of your devices and alert you in case some service has problems.
+
+Some of its features:
+- Auto network discovery and layout
+- Discovers any type or brand of device
+- Device, Link monitoring, and notifications
+- Includes SVG icons for devices, and supports custom icons and backgrounds
+- Easy installation and usage
+- Allows you to draw your own maps and add custom devices
+- Supports SNMP, ICMP, DNS and TCP monitoring for devices that support it
+- Individual Link usage monitoring and graphs
+- Direct access to remote control tools for device management
+- Supports remote Dude server and local client
+- Runs on Windows and 32 bit Wine</description>
+    <projectUrl>https://mikrotik.com/thedude</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/0a098ffdbee39f578992fd6c36fd46083dbea2b3/.github/dude/tool-dude.png</iconUrl>
+    <tags>thedude mikrotik network monitoring tool utility routeros management</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://wiki.mikrotik.com/wiki/Manual:The_Dude/License</licenseUrl>
+    <copyright>Copyright (c) SIA "Mikrotikls"</copyright>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <docsUrl>https://help.mikrotik.com/docs/spaces/ROS/pages/139526162/Spectral+scan#Spectralscan-TheDude</docsUrl>
+    <releaseNotes>## The Dude 6.47.2
+
+From download.mikrotik.com (RouterOS 6.47.2, released 2020-08-13). NSIS installer, x86, installs to `%ProgramFiles(x86)%\Dude`.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,8 +1,8 @@
 ## Changelog
 * `oct 2026`
   * fixed `winbox 3.4` package (it downloaded the `3.3` binary).
-  * added new `netinstall` package (`7.25`).
-  * added new `thedude` package (`7.20.5`).
+  * added new `netinstall` package (`7.25`) and backfilled `7.20.1`–`7.24.5` (21 versions, from the winget `Mikrotik.Netinstall` manifests).
+  * added new `thedude` package (`7.20.5`) and backfilled `6.47.9`–`7.20.1` (11 versions, from the winget `Mikrotik.TheDude` manifests).
   * added new `flashfig` package (`7.25`).
   * adopted and fixed `ipmicfg` (dead `ftp://` download) and backfilled its full version history `1.14.2`–`1.35.1`.
   * `ipmicfg`: every version now embeds the official Supermicro zip (redistributed with Supermicro's permission, sha256 = Supermicro's CheckSum.txt, see `legal\VERIFICATION.txt`) — Supermicro's download server rejects Chocolatey's verifier with 403, so nothing is downloaded at install time anymore.

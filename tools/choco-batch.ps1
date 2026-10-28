@@ -1,11 +1,12 @@
 <#
 .SYNOPSIS
-  Run choco pack / push / install / uninstall over every version folder of a package.
+  Run choco pack / push / install / uninstall over every version folder of a package (or of all packages).
 
 .DESCRIPTION
-  Walks <Path>\<version>\*.nuspec (e.g. chocolatey\thedude\7.25\thedude.nuspec),
-  sorted by version (pre-releases before their release), and runs the given
-  actions for each version, in the order given:
+  Finds every *.nuspec under <Path>, recursively (e.g. chocolatey\thedude\7.25\thedude.nuspec;
+  point it at chocolatey\ to take all packages), sorts them by package id and version
+  (pre-releases before their release) and runs the given actions for each version,
+  in the order given. The nuspecs are only read, never modified:
 
     pack       choco pack <nuspec> --out <version dir>  (skipped if the nupkg is already there, unless -Force)
     push       choco push --source=https://push.chocolatey.org/ <version dir>\<id>.<ver>.nupkg
@@ -17,20 +18,20 @@
   queue limit) unless -ContinueOnError is set.
 
 .EXAMPLE
-  .\choco-batch.ps1 chocolatey\thedude pack -WhatIf
+  .\tools\choco-batch.ps1 chocolatey\thedude pack -WhatIf
   Show the pack commands for every thedude version without running them.
 
 .EXAMPLE
-  .\choco-batch.ps1 chocolatey\thedude pack,push -From 7.21 -To 7.25
+  .\tools\choco-batch.ps1 chocolatey\thedude pack,push -From 7.21 -To 7.25
   Pack and push thedude 7.21 ... 7.25.
 
 .EXAMPLE
-  .\choco-batch.ps1 chocolatey\thedude install,uninstall -Version 7.25
+  .\tools\choco-batch.ps1 chocolatey\thedude install,uninstall -Version 7.25
   Local install + uninstall test of one version.
 #>
 [CmdletBinding()]
 param(
-  # Package folder holding the version folders, e.g. chocolatey\thedude.
+  # Folder searched recursively for *.nuspec, e.g. chocolatey\thedude or chocolatey.
   [Parameter(Mandatory, Position = 0)]
   [string]$Path,
 
@@ -79,13 +80,12 @@ $bad = $Action | Where-Object { $_ -notin 'pack', 'push', 'install', 'uninstall'
 if ($bad) { throw "Unknown action(s): $($bad -join ', '). Use pack, push, install, uninstall." }
 
 $root = Resolve-Path -LiteralPath $Path
-$items = foreach ($dir in Get-ChildItem -LiteralPath $root -Directory) {
-  $nuspec = Get-ChildItem -LiteralPath $dir.FullName -Filter '*.nuspec' -File | Select-Object -First 1
-  if (-not $nuspec) { continue }
+$items = foreach ($nuspec in Get-ChildItem -LiteralPath $root -Filter '*.nuspec' -File -Recurse) {
+  $dir = $nuspec.Directory
   $meta = ([xml](Get-Content -LiteralPath $nuspec.FullName -Raw)).package.metadata
   $ver = $meta.version.Trim()
   if ($ver -notmatch '^\d+(\.\d+){0,3}(-[0-9A-Za-z.-]+)?$') {
-    Write-Warning "Skipping $($dir.Name): unexpected version '$ver' in $($nuspec.Name)."
+    Write-Warning "Skipping $([IO.Path]::GetRelativePath($root, $nuspec.FullName)): unexpected version '$ver' in $($nuspec.Name)."
     continue
   }
   [pscustomobject]@{
@@ -106,9 +106,10 @@ if ($From) { $lo = Get-NumericVersion $From; $items = $items | Where-Object { $_
 if ($To)   { $hi = Get-NumericVersion $To;   $items = $items | Where-Object { $_.Numeric -le $hi } }
 
 # Pre-releases sort before the release with the same numeric version.
-$items = @($items | Sort-Object Numeric, @{ Expression = { [bool]$_.Prerelease }; Descending = $true }, Prerelease)
+$items = @($items | Sort-Object Id, Numeric, @{ Expression = { [bool]$_.Prerelease }; Descending = $true }, Prerelease)
 if (-not $items) { Write-Warning "No version folders matched under $root."; return }
-Write-Host "$($items.Count) version(s): $($items[0].Version) .. $($items[-1].Version); actions: $($Action -join ', ')" -ForegroundColor Cyan
+$ids = @($items.Id | Select-Object -Unique)
+Write-Host "$($items.Count) version(s) of $($ids -join ', '); actions: $($Action -join ', ')" -ForegroundColor Cyan
 
 # The version's nupkg in its folder. choco v2 normalises the file name
 # (7.25 -> 7.25.0), so compare the numeric part and the pre-release tag.

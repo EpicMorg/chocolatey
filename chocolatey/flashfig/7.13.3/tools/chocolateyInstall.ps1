@@ -1,0 +1,17 @@
+$ErrorActionPreference = 'Stop'
+
+$packageName  = 'flashfig'
+$toolsDir     = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$fileFullPath = Join-Path $toolsDir 'flashfig.exe'
+
+# Flashfig ships as a single portable x86 executable (no installer, no x64 build).
+# Download it into the package tools dir; Chocolatey auto-shims it as `flashfig`.
+$packageArgs = @{
+  packageName  = $packageName
+  fileFullPath = $fileFullPath
+  url          = 'https://download.mikrotik.com/routeros/7.13.3/flashfig.exe' # HTTPS preferred
+  checksum     = 'DB3A87676EDF5A0B27C5688F5CA626A0780530E75F81E8E8D54510FA4B5A6D00'
+  checksumType = 'sha256'
+}
+
+Get-ChocolateyWebFile @packageArgs

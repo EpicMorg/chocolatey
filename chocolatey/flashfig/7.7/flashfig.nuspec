@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>flashfig</id>
+    <title>MikroTik Flashfig (Portable)</title>
+    <version>7.7</version>
+    <authors>MikroTik</authors>
+    <owners>epicmorg</owners>
+    <summary>Flashfig is a MikroTik tool for fast and automated configuration of RouterBOARD devices during production.</summary>
+    <description>Flashfig is a MikroTik tool that lets you quickly apply a predefined configuration to RouterBOARD devices over the network, which is especially useful for provisioning many devices during production.
+
+Flashfig runs on a Windows computer and serves a configuration to a device that boots from the network (Etherboot). When the device starts up in Etherboot mode and reaches the Flashfig server, the prepared configuration is written to the device.
+
+Always use the latest Flashfig program available from the MikroTik downloads page; the Flashfig version should match the RouterOS version you intend to deploy.</description>
+    <projectUrl>https://mikrotik.com/download</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/0a098ffdbee39f578992fd6c36fd46083dbea2b3/.github/flashfig/tool-flashfig.png</iconUrl>
+    <tags>flashfig mikrotik routeros routerboard provisioning tool utility network</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://mikrotik.com/downloadterms.html</licenseUrl>
+    <copyright>Copyright (c) SIA "Mikrotikls"</copyright>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <docsUrl>https://help.mikrotik.com/docs/spaces/ROS/pages/139526145/FlashFig</docsUrl>
+    <releaseNotes>## MikroTik Flashfig 7.7
+
+Portable `flashfig.exe` (x86) from download.mikrotik.com. The Flashfig version tracks the RouterOS version (same as The Dude).
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

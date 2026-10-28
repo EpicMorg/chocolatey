@@ -4,7 +4,7 @@
   <metadata>
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>thedude</id>
-    <title>The Dude</title>
+    <title>MikroTik The Dude</title>
     <version>7.20.8</version>
     <authors>MikroTik</authors>
     <owners>epicmorg</owners>

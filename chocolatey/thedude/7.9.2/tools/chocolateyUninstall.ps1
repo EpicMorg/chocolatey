@@ -2,15 +2,19 @@ $ErrorActionPreference = 'Stop'
 
 $packageName = 'thedude'
 
-[array]$key = Get-UninstallRegistryKey -SoftwareName 'Dude*'
+[array]$key = Get-UninstallRegistryKey -SoftwareName 'The Dude*'
 
 if ($key.Count -eq 1) {
   $key | ForEach-Object {
-    Uninstall-ChocolateyPackage -PackageName $packageName `
-      -FileType 'exe' `
-      -SilentArgs '/S' `         # NSIS (nullsoft) silent uninstall
-      -File "$($_.UninstallString)" `
-      -ValidExitCodes @(0)
+    # NSIS (nullsoft) uninstaller; UninstallString may be quoted.
+    $packageArgs = @{
+      packageName    = $packageName
+      fileType       = 'exe'
+      silentArgs     = '/S'
+      file           = $_.UninstallString.Trim('"')
+      validExitCodes = @(0)
+    }
+    Uninstall-ChocolateyPackage @packageArgs
   }
 } elseif ($key.Count -eq 0) {
   Write-Warning "$packageName has already been uninstalled."

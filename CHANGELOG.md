@@ -4,6 +4,7 @@
   * fixed `winbox 3.4` package (it downloaded the `3.3` binary).
   * added new `netinstall` package (`7.25`) and backfilled the full RouterOS history `3.30`–`7.25` (stable + long-term; x86-only before `6.47`). `5.8`–`5.20` are skipped: MikroTik serves a broken (AccessDenied stub) archive for them.
   * added new `thedude` package (`7.20.5`) and backfilled the full RouterOS history `6.33.5`–`7.25` (stable + long-term).
+  * `thedude` (all but the published `7.20.5`): fixed the uninstall script (match the Add/Remove Programs entry `The Dude*`, no comment after a line-continuation backtick); title is now `MikroTik The Dude`.
   * added new `flashfig` package (`7.25`) and backfilled the full RouterOS history `6.47.10`–`7.25` (stable + long-term).
   * adopted and fixed `ipmicfg` (dead `ftp://` download) and backfilled its full version history `1.14.2`–`1.35.1`.
   * `ipmicfg`: every version now embeds the official Supermicro zip (redistributed with Supermicro's permission, sha256 = Supermicro's CheckSum.txt, see `legal\VERIFICATION.txt`) — Supermicro's download server rejects Chocolatey's verifier with 403, so nothing is downloaded at install time anymore.

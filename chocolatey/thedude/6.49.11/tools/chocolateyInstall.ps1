@@ -12,7 +12,7 @@ $packageArgs = @{
   checksumType   = 'sha256'
   silentArgs     = '/S'          # NSIS (nullsoft) silent install
   validExitCodes = @(0)
-  softwareName   = 'Dude*'       # matches the Add/Remove Programs entry (ProductCode: Dude)
+  softwareName   = 'The Dude*'   # matches the Add/Remove Programs DisplayName 'The Dude'
 }
 
 Install-ChocolateyPackage @packageArgs

@@ -26,6 +26,10 @@
   Pack and push thedude 7.21 ... 7.25.
 
 .EXAMPLE
+  .\tools\choco-batch.ps1 chocolatey\thedude push -Exclude 7.20.5
+  Push every thedude version except the already published 7.20.5.
+
+.EXAMPLE
   .\tools\choco-batch.ps1 chocolatey\thedude install,uninstall -Version 7.25
   Local install + uninstall test of one version.
 #>
@@ -41,6 +45,9 @@ param(
 
   # Only these versions (folder name or nuspec version, wildcards allowed).
   [string[]]$Version,
+
+  # Skip these versions (same matching as -Version), e.g. -Exclude 7.20.5.
+  [string[]]$Exclude,
 
   # Version range (inclusive), compared on the numeric part: -From 7.0 -To 7.25.
   [string]$From,
@@ -101,6 +108,9 @@ $items = foreach ($nuspec in Get-ChildItem -LiteralPath $root -Filter '*.nuspec'
 
 if ($Version) {
   $items = $items | Where-Object { $i = $_; $Version | Where-Object { $i.Name -like $_ -or $i.Version -like $_ } }
+}
+if ($Exclude) {
+  $items = $items | Where-Object { $i = $_; -not ($Exclude | Where-Object { $i.Name -like $_ -or $i.Version -like $_ }) }
 }
 if ($From) { $lo = Get-NumericVersion $From; $items = $items | Where-Object { $_.Numeric -ge $lo } }
 if ($To)   { $hi = Get-NumericVersion $To;   $items = $items | Where-Object { $_.Numeric -le $hi } }

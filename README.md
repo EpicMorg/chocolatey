@@ -30,11 +30,14 @@ The push API key comes from choco's config (`choco apikey`).
 # pack + push a version range to community (stops at the first failed push, e.g. queue limit)
 .\tools\choco-batch.ps1 chocolatey\thedude pack,push -From 7.21 -To 7.25
 
+# push everything except an already published version
+.\tools\choco-batch.ps1 chocolatey\thedude push -Exclude 7.20.5
+
 # local install + uninstall test (pre-releases get --pre automatically)
 .\tools\choco-batch.ps1 chocolatey\winbox install,uninstall -Version 4.0beta*
 ```
 
-Options: `-Version` (names/versions, wildcards), `-From` / `-To` (inclusive range),
+Options: `-Version` / `-Exclude` (names/versions to take / skip, wildcards), `-From` / `-To` (inclusive range),
 `-Force` (repack over an existing nupkg; `--force` for install), `-Delay <sec>` between pushes,
 `-ContinueOnError`, `-Source <feed>`, `-WhatIf`. Full help: `Get-Help .\tools\choco-batch.ps1 -Full`.
 

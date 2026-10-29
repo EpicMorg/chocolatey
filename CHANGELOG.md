@@ -1,6 +1,6 @@
 ## Changelog
 * `oct 2026`
-  * `winbox`: added the missing stable `3.8`, `3.13`, `3.15`, `3.25`, `3.26`, `3.33` and all pre-releases `3.0beta1`–`3.0rc17`, `4.0beta1`–`4.0rc3` (versioned `x.y.z.<date>-<betaN|rcN>`, install with `--pre`).
+  * `winbox`: added the missing stable `3.8`, `3.13`, `3.15`, `3.25`, `3.26`, `3.33` and all pre-releases `3.0beta1`–`3.0rc17`, `4.0beta1`–`4.0rc3` (versioned `x.y.z.<date>-<betaN|rcN>`, install with `--pre`); the new versions are titled `MikroTik WinBox (Portable)`.
   * fixed `winbox 3.4` package (it downloaded the `3.3` binary).
   * added new `netinstall` package (`7.25`) and backfilled the full RouterOS history `3.30`–`7.25` (stable + long-term; x86-only before `6.47`). `5.8`–`5.20` are skipped: MikroTik serves a broken (AccessDenied stub) archive for them.
   * added new `thedude` package (`7.20.5`) and backfilled the full RouterOS history `6.33.5`–`7.25` (stable + long-term).

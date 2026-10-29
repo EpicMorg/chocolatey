@@ -4,7 +4,7 @@
   <metadata>
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>winbox</id>
-    <title>WinBox</title>
+    <title>MikroTik WinBox (Portable)</title>
     <version>3.4.20240813</version>
     <authors>MikroTik</authors>
     <owners>qzo</owners>

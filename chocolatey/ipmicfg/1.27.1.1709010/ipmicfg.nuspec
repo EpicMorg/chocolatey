@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>ipmicfg</id>
-    <version>1.27.1.170901-v2</version>
+    <version>1.27.1.1709010</version>
     <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
     <owners>epicmorg</owners>
     <title>SuperMicro IPMICFG (Portable)</title>
@@ -27,7 +27,7 @@ IPMICFG Key Features:
   - Configure IPMI FRU
   - Manage System Event Log (SEL)
   - Manage IPMI by node management (NM) protocol</description>
-    <releaseNotes>IPMICFG 1.27.1 (build 170901). Historical release backfilled by EpicMorg from Supermicro's official mirror over HTTPS; sha256 matches Supermicro's own CheckSum.txt. The official zip is embedded in the package (redistributed with Supermicro's permission); see legal\VERIFICATION.txt.</releaseNotes>
+    <releaseNotes>IPMICFG 1.27.1 (build 170901). Historical release backfilled by EpicMorg from Supermicro's official mirror over HTTPS; sha256 matches Supermicro's own CheckSum.txt. The official zip is embedded in the package (redistributed with Supermicro's permission); see legal\VERIFICATION.txt. Package version 1.27.1.1709010 is a package fix of the approved 1.27.1.170901 (trailing 0 added; the software is still build 170901).</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />

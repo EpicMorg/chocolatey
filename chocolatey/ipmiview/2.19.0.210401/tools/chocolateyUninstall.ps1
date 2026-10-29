@@ -1,11 +1,11 @@
 $ErrorActionPreference = 'Stop'
 
-$packageName = 'ipmiview'
+$packageName = $env:ChocolateyPackageName
 
 # IPMIView registers an Add/Remove Programs entry (InstallAnywhere). Find it and
 # run its uninstaller silently.
-# TODO(verify on Windows): confirm the DisplayName pattern and the uninstaller's
-# silent switch ('-i silent' for InstallAnywhere) on a real Windows box.
+# The ARP entry is "IPMIView" (same as the winget manifests: ProductCode IPMIView);
+# InstallAnywhere uninstallers take '-i silent'.
 [array]$key = Get-UninstallRegistryKey -SoftwareName 'IPMIView*'
 
 if ($key.Count -eq 1) {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ipmiview</id>
+    <version>2.23.0.250519</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>SuperMicro IPMIView</title>
+    <authors>Super Micro Computer, Inc.</authors>
+    <projectUrl>https://www.supermicro.com/en/solutions/management-software/ipmi-utilities</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/refs/heads/develop/.github/ipmicfg/supermicro.png</iconUrl>
+    <copyright>Copyright (c) Super Micro Computer, Inc.</copyright>
+    <licenseUrl>https://www.supermicro.com/about/policies/index.cfm</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.supermicro.com/wdl/utility/IPMIView/IPMIView20_User_Guide.pdf</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/chocolatey/issues</bugTrackerUrl>
+    <tags>ipmiview ipmi supermicro bmc kvm gui management admin</tags>
+    <summary>IPMIView is a GUI application that allows administration of multiple Supermicro servers over IPMI (KVM, SOL, sensors, power, FRU).</summary>
+    <description>IPMIView is a management software application that allows the administration of multiple Supermicro servers through their Baseboard Management Controllers (BMC) over IPMI.
+
+Features include:
+- Discovery and grouping of IPMI-enabled Supermicro systems
+- Remote KVM (console redirection) and Serial-over-LAN (SOL)
+- Sensor monitoring, System Event Log (SEL) viewing
+- Power control and virtual media
+- FRU information and user management
+
+IPMIView is a Java application and is distributed with its own bundled runtime.
+
+![IPMIView](https://rawcdn.githack.com/EpicMorg/chocolatey/refs/heads/develop/.github/ipmiview/screenshot.png)</description>
+    <releaseNotes>## IPMIView 2.23.0 (build 250519)
+
+Released 2025-05-19 (build date).
+- Downloaded at install time from Supermicro's download center: `https://www.supermicro.com/Bios/sw_download/957/IPMIView_2.23.0_build.250519_Windows.zip`
+  (sha256 `2753C753447602E94BBB8AE094545221AD4D08461490AE9C3DAE7C0B2ECCD62B`; Supermicro also publishes a `.sig` next to it).
+- The ZIP holds the InstallAnywhere installer `IPMIView_2.23.0_build.250519_Windows.exe`, run with `-i silent`.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

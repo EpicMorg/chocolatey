@@ -9,6 +9,7 @@
   * adopted and fixed `ipmicfg` (dead `ftp://` download) and backfilled its full version history `1.14.2`–`1.35.1`.
   * `ipmicfg`: every version now embeds the official Supermicro zip (redistributed with Supermicro's permission, sha256 = Supermicro's CheckSum.txt, see `legal\VERIFICATION.txt`) — Supermicro's download server rejects Chocolatey's verifier with 403, so nothing is downloaded at install time anymore.
   * `ipmicfg`: added the newer releases `1.35.0`, `1.35.2`, `1.36.0`, `1.37.0`, `1.38.0` from Supermicro's download center (`/Bios/sw_download/<id>/`; embedded zip, sha256 + Supermicro `.sig` in `legal\VERIFICATION.txt`).
+  * added new `ipmiview` package (Supermicro IPMIView) with the history `2.19.0`–`2.25.0`: downloaded at install time from Supermicro's download center (`/Bios/sw_download/<id>/`), sha256-checked, InstallAnywhere installer run with `-i silent`.
   * added new `enodia` packages `2.1.0`, `2.1.1`, `2.2.0`, `2.2.1`.
 * `2025-2026`
   * added new `winbox`-es packages.

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ipmicfg</id>
+    <version>1.36.0.250225</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>SuperMicro IPMICFG (Portable)</title>
+    <authors>Super Micro Computer, Inc.</authors>
+    <projectUrl>https://www.supermicro.com/en/solutions/management-software/ipmi-utilities</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/refs/heads/develop/.github/ipmicfg/supermicro.png</iconUrl>
+    <copyright>Copyright (c) Super Micro Computer, Inc.</copyright>
+    <licenseUrl>https://www.supermicro.com/about/policies/index.cfm</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.supermicro.com/wdl/utility/IPMICFG/IPMICFG_UserGuide.pdf</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/chocolatey/issues</bugTrackerUrl>
+    <tags>ipmicfg ipmi supermicro cli bmc fru sel nm</tags>
+    <summary>IPMICFG is an in-band utility for configuring IPMI devices. It is a command line tool providing standard IPMI and Supermicro® proprietary OEM commands.</summary>
+    <description>IPMICFG is an in-band utility for configuring IPMI devices. It is a command line tool providing standard IPMI and Supermicro® proprietary OEM commands. This CLI-based utility can be executed on DOS, Windows, and Linux OS and does not require any installation procedures. This utility is used for BMC/FRU configuration.
+
+IPMICFG Key Features:
+
+  - Set up IPMI IP Address
+  - Set up IPMI Configuration
+  - Configure IPMI User Management
+  - Configure IPMI FRU
+  - Manage System Event Log (SEL)
+  - Manage IPMI by node management (NM) protocol</description>
+    <releaseNotes>## IPMICFG 1.36.0 (build 250225)
+
+Released 2025-02-25 (build date).
+- Embeds the official archive from Supermicro's download center
+  (`https://www.supermicro.com/Bios/sw_download/897/IPMICFG_1.36.0_build.250225.zip`), redistributed with Supermicro's permission — nothing is downloaded at install time;
+  see legal\VERIFICATION.txt.
+- sha256 `49F7207E9913650130F1372A3EB45402F8F5A1C74A01032518AB7AFF01A0E193`.
+- Extracts only the matching-bitness `Windows\<32|64>bit` folder; the command is `ipmicfg`.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="legal\**" target="legal" />
+  </files>
+</package>

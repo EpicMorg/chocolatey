@@ -1,0 +1,26 @@
+VERIFICATION
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+The embedded archive tools\IPMICFG_1.37.0_build.250723.zip is the unmodified official
+IPMICFG 1.37.0 (build 250723) release from Supermicro's download center:
+
+  https://www.supermicro.com/Bios/sw_download/965/IPMICFG_1.37.0_build.250723.zip
+
+(the download center at https://www.supermicro.com/en/support/resources/downloadcenter/smsdownload?category=IPMI
+resolves the IPMICFG download to that URL via
+https://www.supermicro.com/support/resources/getfile.php?SoftwareItemID=965&type=serversoftwarefile).
+Supermicro also publishes a signature next to it:
+
+  https://www.supermicro.com/Bios/sw_download/965/IPMICFG_1.37.0_build.250723.sig
+
+To verify:
+  1. Download the archive from the URL above (or take tools\IPMICFG_1.37.0_build.250723.zip
+     from this package).
+  2. Get its checksum, e.g. in PowerShell:
+       Get-FileHash -Algorithm SHA256 .\IPMICFG_1.37.0_build.250723.zip
+     or with Chocolatey's checksum tool:
+       checksum -t sha256 -f .\IPMICFG_1.37.0_build.250723.zip
+  3. It must match:
+
+  SHA256: CC3D15F77C8F56C18B99AA1C5289058F7591DAF30C57578E1073805B29E51945

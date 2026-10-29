@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>smcipmitool</id>
+    <version>2.30.0.250915</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>SuperMicro SMCIPMITool (Portable)</title>
+    <authors>Super Micro Computer, Inc.</authors>
+    <projectUrl>https://www.supermicro.com/en/solutions/management-software/ipmi-utilities</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/chocolatey/refs/heads/develop/.github/ipmicfg/supermicro.png</iconUrl>
+    <copyright>Copyright (c) Super Micro Computer, Inc.</copyright>
+    <licenseUrl>https://www.supermicro.com/about/policies/index.cfm</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.supermicro.com/en/solutions/management-software/ipmi-utilities</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/chocolatey/issues</bugTrackerUrl>
+    <tags>smcipmitool ipmi supermicro cli bmc kvm superblade redfish</tags>
+    <summary>SMCIPMITool is Supermicro's out-of-band command line utility for managing IPMI devices (BMC) and SuperBlade systems over the network.</summary>
+    <description>SMCIPMITool is a command line interface utility for Supermicro IPMI devices (BMC) and SuperBlade systems. It manages servers out-of-band, over the network, and complements the in-band IPMICFG.
+
+Key features:
+
+  - IPMI and Supermicro OEM commands against a remote BMC (power control, sensors, SEL, FRU, users, network settings)
+  - BMC and BIOS firmware update, virtual media and remote KVM launch
+  - SuperBlade, MicroBlade and other chassis management
+  - Shell mode and batch execution across many hosts
+
+The package ships the official Windows build with its bundled Java runtime (no Java installation needed). Only `smcipmitool` is put on the PATH: the bundled `java.exe` and the other runtime tools are not shimmed.</description>
+    <releaseNotes>## SMCIPMITool 2.30.0 (build 250915)
+
+Released 2025-09-15 (build date).
+- Downloaded at install time from Supermicro's download center: `https://www.supermicro.com/Bios/sw_download/993/SMCIPMITool_2.30.0_build.250915_bundleJRE_Windows.zip`
+  (sha256 `FE3D2B9AA4A8B070529D92DE4DB4D0B56E0978A66C66EB405F19B6E1F43F3A74`; Supermicro also publishes a `.sig` next to it).
+- Portable: extracted into the package folder; the command is `smcipmitool`.
+- The bundled JRE is used, so no Java installation is needed; its executables are not shimmed.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

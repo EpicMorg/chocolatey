@@ -10,6 +10,8 @@
 
     pack       choco pack <nuspec> --out <version dir>  (skipped if the nupkg is already there, unless -Force)
     push       choco push --source=https://push.chocolatey.org/ <version dir>\<id>.<ver>.nupkg
+               (skipped if community.chocolatey.org already has that version, incl. ones
+               still in moderation, unless -Force)
     install    choco install <id> --version <ver> from the version dir (+ community feed for dependencies)
     uninstall  choco uninstall <id>
 
@@ -60,6 +62,7 @@ param(
   [int]$Delay = 0,
 
   # pack: rebuild even if the version's nupkg already exists (it is overwritten).
+  # push: push even if community.chocolatey.org already has the version.
   # install: pass --force to choco (reinstall / switch between versions).
   [switch]$Force,
 
@@ -131,6 +134,28 @@ function Find-Nupkg($i) {
   } | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 }
 
+# NuGet-normalised version, as used in community URLs: 7.21 -> 7.21.0, 1.2.3.0 -> 1.2.3.
+function Get-NormalizedVersion($i) {
+  $p = @($i.Numeric.Major, $i.Numeric.Minor, $i.Numeric.Build)
+  if ($i.Numeric.Revision -ne 0) { $p += $i.Numeric.Revision }
+  ($p -join '.') + $(if ($i.Prerelease) { "-$($i.Prerelease)" } else { '' })
+}
+
+# Whether community.chocolatey.org already has this version (any status: approved,
+# waiting for moderation, ...). Its page answers 404 for versions never pushed.
+function Test-OnCommunity($i) {
+  $url = "https://community.chocolatey.org/packages/$($i.Id)/$(Get-NormalizedVersion $i)"
+  try {
+    Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing -TimeoutSec 30 | Out-Null
+    return $true
+  } catch {
+    $status = $_.Exception.Response.StatusCode
+    if ($status -and [int]$status -eq 404) { return $false }
+    Write-Warning "Could not check $url ($($_.Exception.Message)); pushing anyway."
+    return $false
+  }
+}
+
 function Invoke-Choco([string[]]$chocoArgs) {
   Write-Host "> choco $($chocoArgs -join ' ')" -ForegroundColor DarkGray
   if ($WhatIf) { return $true }
@@ -164,7 +189,10 @@ $pushed = 0
       }
       'push' {
         $nupkg = Find-Nupkg $i
-        if (-not $nupkg -and -not $WhatIf) {
+        if ($Source -match 'push\.chocolatey\.org' -and -not $Force -and (Test-OnCommunity $i)) {
+          Write-Host "already on community.chocolatey.org - skipping push (use -Force to push anyway)." -ForegroundColor DarkYellow
+          $ok = $true
+        } elseif (-not $nupkg -and -not $WhatIf) {
           Write-Warning "No $($i.Id) nupkg in $($i.Dir) - run pack first."
           $ok = $false
         } else {

@@ -20,7 +20,8 @@
 
 `tools/choco-batch.ps1` finds every `*.nuspec` under a folder (recursively) and runs
 `choco pack` / `push` / `install` / `uninstall` for each version, sorted by version.
-Nuspecs are only read. A version whose `.nupkg` already exists is not repacked without `-Force`.
+Nuspecs are only read. Without `-Force` it does not repack a version whose `.nupkg` already exists
+and does not push a version community.chocolatey.org already has (including ones still in moderation).
 The push API key comes from choco's config (`choco apikey`).
 
 ```powershell
@@ -38,7 +39,7 @@ The push API key comes from choco's config (`choco apikey`).
 ```
 
 Options: `-Version` / `-Exclude` (names/versions to take / skip, wildcards), `-From` / `-To` (inclusive range),
-`-Force` (repack over an existing nupkg; `--force` for install), `-Delay <sec>` between pushes,
+`-Force` (repack over an existing nupkg; push even if already on community; `--force` for install), `-Delay <sec>` between pushes,
 `-ContinueOnError`, `-Source <feed>`, `-WhatIf`. Full help: `Get-Help .\tools\choco-batch.ps1 -Full`.
 
 ## :smile: Thanks

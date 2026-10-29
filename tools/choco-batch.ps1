@@ -134,9 +134,16 @@ function Find-Nupkg($i) {
 function Invoke-Choco([string[]]$chocoArgs) {
   Write-Host "> choco $($chocoArgs -join ' ')" -ForegroundColor DarkGray
   if ($WhatIf) { return $true }
-  & choco @chocoArgs
+  # Show choco's output but keep it out of the return value (otherwise the
+  # function returns the log lines and any failure looks like success).
+  & choco @chocoArgs 2>&1 | Tee-Object -Variable log | Out-Host
+  $code = $LASTEXITCODE
   # 1641 / 3010: success, reboot required
-  return ($LASTEXITCODE -in 0, 1641, 3010)
+  if ($code -notin 0, 1641, 3010) { return $false }
+  # Belt and braces: a rejected push (e.g. 403 when too many versions are in the
+  # moderation queue) must not pass as success even if choco exits with 0.
+  if ($chocoArgs[0] -eq 'push' -and ($log -match '\(403\)|Forbidden|Failed to process request|ERROR')) { return $false }
+  return $true
 }
 
 $failed = @()
@@ -179,8 +186,9 @@ $pushed = 0
       $failed += "$($i.Version) $a"
       Write-Warning "$($i.Id) $($i.Version): $a failed."
       if ($ContinueOnError) { continue versions }
-      $hint = if ($a -eq 'push') { ' (moderation queue limit?)' } else { '' }
+      $hint = if ($a -eq 'push' -and $nupkg) { ' (moderation queue limit?)' } else { '' }
       Write-Warning "Stopping$hint. Use -ContinueOnError to keep going."
+      Write-Warning "To resume: -From $($i.Version)"
       break versions
     }
   }

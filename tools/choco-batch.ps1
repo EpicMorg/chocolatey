@@ -92,10 +92,18 @@ if ($bad) { throw "Unknown action(s): $($bad -join ', '). Use pack, push, instal
 $root = Resolve-Path -LiteralPath $Path
 $items = foreach ($nuspec in Get-ChildItem -LiteralPath $root -Filter '*.nuspec' -File -Recurse) {
   $dir = $nuspec.Directory
-  $meta = ([xml](Get-Content -LiteralPath $nuspec.FullName -Raw)).package.metadata
+  # Relative path for messages ([IO.Path]::GetRelativePath is missing in Windows PowerShell 5.1).
+  $rel = $nuspec.FullName.Substring($root.Path.Length).TrimStart('\', '/')
+  try {
+    # Read as UTF-8 explicitly: Windows PowerShell 5.1 defaults to the ANSI code page.
+    $meta = ([xml](Get-Content -LiteralPath $nuspec.FullName -Raw -Encoding UTF8)).package.metadata
+  } catch {
+    Write-Warning "Skipping ${rel}: not valid XML ($($_.Exception.Message))"
+    continue
+  }
   $ver = $meta.version.Trim()
   if ($ver -notmatch '^\d+(\.\d+){0,3}(-[0-9A-Za-z.-]+)?$') {
-    Write-Warning "Skipping $([IO.Path]::GetRelativePath($root, $nuspec.FullName)): unexpected version '$ver' in $($nuspec.Name)."
+    Write-Warning "Skipping ${rel}: unexpected version '$ver' in $($nuspec.Name)."
     continue
   }
   [pscustomobject]@{

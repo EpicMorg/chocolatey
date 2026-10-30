@@ -8,7 +8,12 @@
   (pre-releases before their release) and runs the given actions for each version,
   in the order given. The nuspecs are only read, never modified:
 
-    pack       choco pack <nuspec> --out <version dir>  (skipped if the nupkg is already there, unless -Force)
+    fetch      download the embedded archive named in legal\VERIFICATION.txt ("The embedded
+               archive tools\<file>" + its URL + "SHA256: ...") into tools\ and check the
+               sha256; used by packages whose archive is too big for git (ipmiview,
+               smcipmitool). Skipped if the file is already there with the right hash.
+    pack       choco pack <nuspec> --out <version dir>  (skipped if the nupkg is already there, unless -Force);
+               runs fetch first
     push       choco push --source=https://push.chocolatey.org/ <version dir>\<id>.<ver>.nupkg
                (skipped if community.chocolatey.org already has that version, incl. ones
                still in moderation, unless -Force)
@@ -41,7 +46,7 @@ param(
   [Parameter(Mandatory, Position = 0)]
   [string]$Path,
 
-  # One or more of: pack, push, install, uninstall (run per version in this order).
+  # One or more of: fetch, pack, push, install, uninstall (run per version in this order).
   [Parameter(Mandatory, Position = 1)]
   [string[]]$Action,
 
@@ -86,8 +91,8 @@ function Get-NumericVersion([string]$v) {
 
 # Accept both `pack,push` (array) and "pack,push" (one string, e.g. from cmd / -File).
 $Action = @($Action -split ',' | ForEach-Object { $_.Trim().ToLower() } | Where-Object { $_ })
-$bad = $Action | Where-Object { $_ -notin 'pack', 'push', 'install', 'uninstall' }
-if ($bad) { throw "Unknown action(s): $($bad -join ', '). Use pack, push, install, uninstall." }
+$bad = $Action | Where-Object { $_ -notin 'fetch', 'pack', 'push', 'install', 'uninstall' }
+if ($bad) { throw "Unknown action(s): $($bad -join ', '). Use fetch, pack, push, install, uninstall." }
 
 $root = Resolve-Path -LiteralPath $Path
 $items = foreach ($nuspec in Get-ChildItem -LiteralPath $root -Filter '*.nuspec' -File -Recurse) {
@@ -164,6 +169,60 @@ function Test-OnCommunity($i) {
   }
 }
 
+# Embedded archive of a version (tools\<file>), taken from legal\VERIFICATION.txt:
+# "The embedded archive tools\<file>", the download URL ending in <file> and "SHA256: <hash>".
+# Returns $null for packages without one.
+function Get-EmbeddedArchive($i) {
+  $verification = Join-Path $i.Dir 'legal\VERIFICATION.txt'
+  if (-not (Test-Path -LiteralPath $verification)) { return $null }
+  $text = Get-Content -LiteralPath $verification -Raw -Encoding UTF8
+  if ($text -notmatch 'The embedded archive tools\\(\S+)') { return $null }
+  $name = $Matches[1]
+  $url = [regex]::Match($text, "(?m)^\s*(https://\S+/$([regex]::Escape($name)))\s*$").Groups[1].Value
+  $sha = [regex]::Match($text, 'SHA256:\s*([0-9A-Fa-f]{64})').Groups[1].Value
+  if (-not $url -or -not $sha) { throw "$verification names tools\$name but has no URL / SHA256 for it." }
+  [pscustomobject]@{ Path = Join-Path $i.Dir "tools\$name"; Url = $url; Sha256 = $sha.ToUpper() }
+}
+
+# Download the embedded archive into tools\ unless it is already there with the right hash.
+function Invoke-Fetch($i) {
+  $a = Get-EmbeddedArchive $i
+  if (-not $a) { return $true }
+  if (Test-Path -LiteralPath $a.Path) {
+    if ((Get-FileHash -LiteralPath $a.Path -Algorithm SHA256).Hash -eq $a.Sha256) { return $true }
+    Write-Warning "$($a.Path) has a wrong sha256 - downloading it again."
+  }
+  Write-Host "> fetch $($a.Url)" -ForegroundColor DarkGray
+  if ($WhatIf) { return $true }
+  $tmp = "$($a.Path).part"
+  # Prefer curl (shipped with Windows 10+): Supermicro's CDN answers 403 to
+  # Invoke-WebRequest but serves curl. Fall back to Invoke-WebRequest without it.
+  $curl = Get-Command curl.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+  try {
+    if ($curl) {
+      & $curl.Source --fail --location --silent --show-error --retry 3 --output $tmp $a.Url
+      if ($LASTEXITCODE -ne 0) { throw "curl exited with $LASTEXITCODE" }
+    } else {
+      [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+      # The progress bar makes Invoke-WebRequest very slow on Windows PowerShell 5.1.
+      $ProgressPreference = 'SilentlyContinue'
+      Invoke-WebRequest -Uri $a.Url -OutFile $tmp -UseBasicParsing
+    }
+  } catch {
+    Write-Warning "Download failed: $($_.Exception.Message)"
+    Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue
+    return $false
+  }
+  $hash = (Get-FileHash -LiteralPath $tmp -Algorithm SHA256).Hash
+  if ($hash -ne $a.Sha256) {
+    Write-Warning "sha256 mismatch for $($a.Url): got $hash, expected $($a.Sha256)."
+    Remove-Item -LiteralPath $tmp -Force
+    return $false
+  }
+  Move-Item -LiteralPath $tmp -Destination $a.Path -Force
+  return $true
+}
+
 function Invoke-Choco([string[]]$chocoArgs) {
   Write-Host "> choco $($chocoArgs -join ' ')" -ForegroundColor DarkGray
   if ($WhatIf) { return $true }
@@ -186,13 +245,16 @@ $pushed = 0
   foreach ($a in $Action) {
     $pre = if ($i.Prerelease) { @('--pre') } else { @() }
     switch ($a) {
+      'fetch' {
+        $ok = Invoke-Fetch $i
+      }
       'pack' {
         $existing = Find-Nupkg $i
         if ($existing -and -not $Force) {
           Write-Warning "$($existing.Name) already exists - not repacking (use -Force to overwrite)."
           $ok = $true
         } else {
-          $ok = Invoke-Choco @('pack', $i.Nuspec, "--out=$($i.Dir)")
+          $ok = (Invoke-Fetch $i) -and (Invoke-Choco @('pack', $i.Nuspec, "--out=$($i.Dir)"))
         }
       }
       'push' {

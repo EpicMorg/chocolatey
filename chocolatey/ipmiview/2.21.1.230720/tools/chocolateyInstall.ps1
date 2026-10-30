@@ -2,19 +2,16 @@ $ErrorActionPreference = 'Stop'
 
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 
-# IPMIView 2.21.1 build 230720. Supermicro ships IPMIView for Windows as a ZIP (~204 MB)
-# that holds a single InstallAnywhere installer EXE with its own bundled JRE.
-# The ZIP is downloaded from Supermicro's download center and checked against the
-# sha256 below, then the installer is run unattended.
-$packageArgs = @{
-  packageName   = "$env:ChocolateyPackageName"
-  unzipLocation = $toolsDir
-  url           = 'https://www.supermicro.com/Bios/sw_download/585/IPMIView_2.21.1_build.230720_Windows.zip'
-  checksum      = 'C0BAB45077CA171E4983729CF4E1F48C49D9954B6B5D8A0B429A8EA7305DFC9E'
-  checksumType  = 'sha256'
-}
+# IPMIView 2.21.1 build 230720. The official, unmodified Supermicro archive is embedded in
+# this package (redistributed with Supermicro's permission), so the install does not
+# depend on Supermicro's download server. See legal\VERIFICATION.txt.
+# The ZIP holds a single InstallAnywhere installer EXE with its own bundled JRE.
+$zip = Join-Path $toolsDir 'IPMIView_2.21.1_build.230720_Windows.zip'
 
-Install-ChocolateyZipPackage @packageArgs
+Get-ChocolateyUnzip -FileFullPath $zip -Destination $toolsDir -PackageName "$env:ChocolateyPackageName"
+
+# The archive is no longer needed once extracted.
+Remove-Item -LiteralPath $zip -Force -ErrorAction SilentlyContinue
 
 $installer = Join-Path $toolsDir 'IPMIView_2.21.1_build.230720_Windows.exe'
 

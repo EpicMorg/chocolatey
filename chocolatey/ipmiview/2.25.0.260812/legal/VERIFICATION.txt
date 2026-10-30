@@ -1,0 +1,26 @@
+VERIFICATION
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+The embedded archive tools\IPMIView_2.25.0_build.260812_Windows.zip is the unmodified official
+IPMIView 2.25.0 (build 260812) release from Supermicro's download center:
+
+  https://www.supermicro.com/Bios/sw_download/1173/IPMIView_2.25.0_build.260812_Windows.zip
+
+(the download center at https://www.supermicro.com/en/support/resources/downloadcenter/smsdownload?category=IPMI
+resolves the IPMIView download to that URL via
+https://www.supermicro.com/support/resources/getfile.php?SoftwareItemID=1173&type=serversoftwarefile).
+Supermicro also publishes a signature next to it:
+
+  https://www.supermicro.com/Bios/sw_download/1173/IPMIView_2.25.0_build.260812_Windows.sig
+
+To verify:
+  1. Download the archive from the URL above (or take tools\IPMIView_2.25.0_build.260812_Windows.zip
+     from this package).
+  2. Get its checksum, e.g. in PowerShell:
+       Get-FileHash -Algorithm SHA256 .\IPMIView_2.25.0_build.260812_Windows.zip
+     or with Chocolatey's checksum tool:
+       checksum -t sha256 -f .\IPMIView_2.25.0_build.260812_Windows.zip
+  3. It must match:
+
+  SHA256: FD4466C605AF4156156B5B341DB843F5AAC5906E64964A57CD7C19DF14E7D247

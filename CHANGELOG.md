@@ -12,6 +12,8 @@
   * added new `ipmiview` package (Supermicro IPMIView) with the history `2.19.0`–`2.25.0`: downloaded at install time from Supermicro's download center (`/Bios/sw_download/<id>/`), sha256-checked, InstallAnywhere installer run with `-i silent`.
   * added new `smcipmitool` package (Supermicro SMCIPMITool, portable, bundled JRE) with the history `2.25.0`–`2.31.0`: downloaded at install time from Supermicro's download center (`/Bios/sw_download/<id>/`), sha256-checked; only `smcipmitool` is shimmed (the bundled `java.exe` etc. are not).
   * added new `enodia` packages `2.1.0`, `2.1.1`, `2.2.0`, `2.2.1`.
+  * `ipmiview`, `smcipmitool`: every version now embeds the official Supermicro zip like `ipmicfg` (the Chocolatey verifier gets 403 from Supermicro's download server, so the link-based install failed verification). The zips are over GitHub's 100 MB limit, so they are not in git (`.gitignore`): `tools\choco-batch.ps1 <path> pack` fetches each one into `tools\` from the URL in `legal\VERIFICATION.txt` and checks its sha256 (new `fetch` action, uses `curl.exe`).
+  * removed the `winbox3` package.
 * `2025-2026`
   * added new `winbox`-es packages.
   * added new `airtest-ide`-es packages.

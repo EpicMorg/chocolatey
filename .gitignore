@@ -1,0 +1,7 @@
+# Embedded archives over GitHub's 100 MB file limit: not committed, fetched into tools\
+# by `tools\choco-batch.ps1 <path> pack` (or `fetch`) from the URL in legal\VERIFICATION.txt.
+chocolatey/ipmiview/*/tools/*.zip
+chocolatey/smcipmitool/*/tools/*.zip
+# Their packages embed the archive, so the nupkgs are too big for git as well.
+chocolatey/ipmiview/*/*.nupkg
+chocolatey/smcipmitool/*/*.nupkg

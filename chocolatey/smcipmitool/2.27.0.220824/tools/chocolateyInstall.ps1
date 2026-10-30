@@ -2,18 +2,16 @@ $ErrorActionPreference = 'Stop'
 
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 
-# SMCIPMITool 2.27.0 build 220824. Supermicro ships it as a portable ZIP (~115 MB) with its
-# own Java runtime. The ZIP is downloaded from Supermicro's download center, checked
-# against the sha256 below and extracted into the package folder.
-$packageArgs = @{
-  packageName   = "$env:ChocolateyPackageName"
-  unzipLocation = $toolsDir
-  url           = 'https://www.supermicro.com/Bios/sw_download/472/SMCIPMITool_2.27.0_build.220824_bundleJRE_Windows.zip'
-  checksum      = 'DD6E019AFE5DE9FCF7A0459D0FF512D17A255879FCBC324E29D7419539F9B549'
-  checksumType  = 'sha256'
-}
+# SMCIPMITool 2.27.0 build 220824. The official, unmodified Supermicro archive (portable,
+# with its own Java runtime) is embedded in this package (redistributed with
+# Supermicro's permission), so the install does not depend on Supermicro's download
+# server. See legal\VERIFICATION.txt.
+$zip = Join-Path $toolsDir 'SMCIPMITool_2.27.0_build.220824_bundleJRE_Windows.zip'
 
-Install-ChocolateyZipPackage @packageArgs
+Get-ChocolateyUnzip -FileFullPath $zip -Destination $toolsDir -PackageName "$env:ChocolateyPackageName"
+
+# The archive is no longer needed once extracted.
+Remove-Item -LiteralPath $zip -Force -ErrorAction SilentlyContinue
 
 # Chocolatey shims every .exe in the package. Only SMCIPMITool.exe should be on the
 # PATH: the bundled JRE (java.exe, keytool.exe, ...) and stunnel.exe must not shadow

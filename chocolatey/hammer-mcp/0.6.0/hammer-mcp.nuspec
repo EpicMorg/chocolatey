@@ -45,7 +45,7 @@ Hammer-MCP never injects into or writes to game processes: the shell channel and
 
 ## Package notes
 - Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) and `hammer-mcp-cli` (console) are put on the PATH, and a Start menu shortcut is created.
-- Windows 10/11 x64 only. Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Windows 10/11, x86 and x64 (the 32-bit build also works with a 64-bit Hammer). Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
 - Status: beta.
 </description>
     <releaseNotes>## [0.6.0] - 2026-11-14

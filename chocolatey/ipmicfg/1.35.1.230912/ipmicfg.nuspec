@@ -31,12 +31,11 @@ IPMICFG Key Features:
 
 Repackaged by the new maintainer. The previous package pulled 1.27.1 over a now-dead `ftp://ftp.supermicro.com` URL (chocolatey verification failed). This release:
 - bumps to 1.35.1 build 230912;
-- embeds the official archive from Supermicro's mirror (`www.supermicro.com/wdl/utility/IPMICFG`), redistributed with Supermicro's permission; see legal\VERIFICATION.txt;
+- downloads over HTTPS from the official Supermicro mirror (`www.supermicro.com/wdl/utility/IPMICFG`);
 - uses the sha256 published in Supermicro's own CheckSum.txt.
     </releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
-    <file src="legal\**" target="legal" />
   </files>
 </package>

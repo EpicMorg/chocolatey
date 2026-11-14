@@ -27,10 +27,9 @@ IPMICFG Key Features:
   - Configure IPMI FRU
   - Manage System Event Log (SEL)
   - Manage IPMI by node management (NM) protocol</description>
-    <releaseNotes>IPMICFG 1.32.0 (build 200820). Historical release backfilled by EpicMorg from Supermicro's official mirror over HTTPS; sha256 matches Supermicro's own CheckSum.txt. The official zip is embedded in the package (redistributed with Supermicro's permission); see legal\VERIFICATION.txt.</releaseNotes>
+    <releaseNotes>IPMICFG 1.32.0 (build 200820). Historical release backfilled by EpicMorg from Supermicro's official mirror over HTTPS; sha256 matches Supermicro's own CheckSum.txt.</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
-    <file src="legal\**" target="legal" />
   </files>
 </package>

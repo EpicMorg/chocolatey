@@ -1,4 +1,6 @@
 ## Changelog
+* `nov 2026`
+  * `ipmicfg`, `ipmiview`, `smcipmitool`: back to downloading the official Supermicro archive at install time (sha256-pinned); the embedded zips and `legal\` are gone. The Chocolatey reviewer confirmed that URL-based packages are fine and that the verifier's 403 from Supermicro's download server is environmental (covered by a verification exemption). `.gitignore` for the big zips removed.
 * `oct 2026`
   * `winbox`: added the missing stable `3.8`, `3.13`, `3.15`, `3.25`, `3.26`, `3.33` and all pre-releases `3.0beta1`–`3.0rc17`, `4.0beta1`–`4.0rc3` (versioned `x.y.z.<date>-<betaN|rcN>`, install with `--pre`); the new versions are titled `MikroTik WinBox (Portable)`.
   * fixed `winbox 3.4` package (it downloaded the `3.3` binary).

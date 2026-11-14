@@ -3,21 +3,20 @@ $ErrorActionPreference = 'Stop'
 $bitness  = Get-ProcessorBits
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 
-# IPMICFG 1.35.0 build 230825. The official, unmodified Supermicro archive is
-# embedded in this package (redistributed with Supermicro's permission), so the
-# install does not depend on Supermicro's download server. See legal\VERIFICATION.txt.
+# IPMICFG 1.35.0 build 230825.
+# Downloaded over HTTPS from Supermicro's official server and checked against the
+# pinned sha256.
 # Only the matching-bitness Windows folder is extracted; Choco auto-shims the exe.
 $packageArgs = @{
   packageName    = "$env:chocolateyPackageName"
-  fileFullPath   = Join-Path $toolsDir 'IPMICFG_1.35.0_build.230825.zip'
-  destination    = $toolsDir
+  url            = 'https://www.supermicro.com/Bios/sw_download/609/IPMICFG_1.35.0_build.230825.zip'
+  unzipLocation  = $toolsDir
+  checksum       = 'D63E761D8F648295A54D9DB1530481EC3FC8CABAAEC78C79B2E9D06142425AB6'
+  checksumType   = 'sha256'
   specificFolder = "IPMICFG_1.35.0_build.230825\Windows\${bitness}bit"
 }
 
-Get-ChocolateyUnzip @packageArgs
-
-# The archive is no longer needed once extracted.
-Remove-Item -LiteralPath $packageArgs.fileFullPath -Force -ErrorAction SilentlyContinue
+Install-ChocolateyZipPackage @packageArgs
 
 # Expose one stable command across every version: the shipped binary is named
 # IPMICFG-Win.exe (older builds: ipmicfg-win.exe), so Chocolatey would otherwise

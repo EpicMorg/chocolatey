@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>retime-phoneme-util-gui</id>
+    <version>1.1.0.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Retime Phoneme Util: GUI (Portable)</title>
+    <authors>Antinomy Collective, EpicMorg</authors>
+    <projectUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/AntinomyCollective/Retime-Phoneme-Util-GUI/d1cc58f9aac297726899ae35ad0229602a984167/src/kru.gui/favicon.png</iconUrl>
+    <copyright>Copyright (c) 2023 Antinomy Collective</copyright>
+    <licenseUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI/blob/main/LICENSE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI/issues</bugTrackerUrl>
+    <tags>retime-phoneme phoneme lip-sync source-engine valve sound localization modding gamedev foss</tags>
+    <summary>GUI for Retime Phoneme Util: move phoneme (lip-sync) data of Source engine sounds to corrected sounds.</summary>
+    <description>A graphical front end for **Retime Phoneme Util**, the console tool by wowks ([CSMania forum](https://forum.csmania.ru/viewtopic.php?t=43274)) for Source engine sound files: it loads the phoneme (lip-sync) data of the original sound, changes its time intervals to fit the corrected sound and saves it there. It can also strip redundant data after the audio (such as the metadata left by Sony Sound Forge).
+
+The GUI runs the tool over whole folders (input, output and an optional "clean" output folder), can save the commands as a batch file and keeps a log - hours of manual work when localising or re-recording voice-over for Source games and mods.
+
+![Retime Phoneme Util: GUI](https://user-images.githubusercontent.com/1307229/212532738-7c18da74-c9c0-4401-ba21-411284974fbe.png)
+
+## Package notes
+- Portable: the official release zip (self-contained .NET 7, WPF; the `win10` build for your architecture) is extracted into the package folder; `kru.gui` (GUI shim) is put on the PATH and a Start menu shortcut `Retime Phoneme Util GUI` is created. The bundled `retime_phoneme.exe` files are not shimmed.
+</description>
+    <releaseNotes>## 1.1.0.0 - 2023-01-15
+
+- Fixed `Clean` logic
+- Improved UI
+
+Release: https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI/releases/tag/1.1.0.0
+</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>universal-valve-toolbox</id>
+    <version>1.0.0.4</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Universal Valve Toolbox (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/UniversalValveToolbox</projectUrl>
+    <copyright>Copyright (c) EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/UniversalValveToolbox/blob/master/LICENSE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/UniversalValveToolbox</projectSourceUrl>
+    <docsUrl>https://github.com/EpicMorg/UniversalValveToolbox/blob/master/SETTINGS.md</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/UniversalValveToolbox/issues</bugTrackerUrl>
+    <tags>universal-valve-toolbox valve source-engine source-sdk hammer modding gamedev steam launcher foss</tags>
+    <summary>Toolbox for easy launching the official Valve SDKs such as Source SDK 2013 SP or MP.</summary>
+    <description>Universal Valve Toolbox is a launcher for the official Valve SDKs and the tools of Source engine games: pick a game you own on Steam (Source SDK 2013 Singleplayer / Multiplayer, Half-Life 2, Portal, Team Fortress 2, Left 4 Dead 2, Garry's Mod, Black Mesa, Source Filmmaker and more - see the [list of supported games](https://github.com/EpicMorg/UniversalValveToolbox/blob/master/SUPPORTED.md)) and start Hammer, Model Viewer, Faceposer and the other SDK tools, your mod projects and helper apps from one window.
+
+`Universal Valve Toolbox is not affiliated with Valve Corporation.`
+
+## Features
+- Detects the installed Source games and SDKs through Steam
+- Engine, tool and addon definitions are JSON files (`json\engines`, `json\addons`) - easy to extend
+- Projects (mods) with their own launch options
+- Modes `retail` (default), `bundle` (ship it with your game) and `dev` - see [SETTINGS.md](https://github.com/EpicMorg/UniversalValveToolbox/blob/master/SETTINGS.md)
+- English, Russian and Ukrainian UI
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `UniversalValveToolbox` (GUI shim) is put on the PATH and a Start menu shortcut is created.
+- Needs .NET Framework 4.8 (dependency) and a running Steam client.
+- The toolbox keeps `settings.json` and your projects in its own `json` folder: the package lets users write there and keeps `json\settings.json` and `json\projects` over upgrades (a copy is kept in `%ProgramData%\EpicMorg\UniversalValveToolbox`).
+</description>
+    <releaseNotes>## 1.0.0.4 - 2022-04-15
+
+- Fixed `SteamInit` on program initialization and added tries to launch `Steam`
+- Fixed `Run project` option
+- Added support for new engines
+- Added some default addons, but not linked with any engines
+
+Release: https://github.com/EpicMorg/UniversalValveToolbox/releases/tag/1.0.0.4
+</releaseNotes>
+    <dependencies>
+      <dependency id="netfx-4.8" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

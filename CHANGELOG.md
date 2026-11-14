@@ -1,6 +1,8 @@
 ## Changelog
 * `nov 2026`
-  * added new `hammer-mcp` package (`0.6.0`): EpicMorg's MCP server for Valve Hammer Editor, portable release zip from GitHub; `hammer-mcp` (tray app, GUI shim) and `hammer-mcp-cli` (console) on the PATH, Start menu shortcut.
+  * added new `hammer-mcp` package (`0.1.0-alpha`–`0.6.0`): EpicMorg's MCP server for Valve Hammer Editor, portable release zip from GitHub; `hammer-mcp` (tray app, GUI shim) and, since `0.6.0`, `hammer-mcp-cli` (console) on the PATH, Start menu shortcut.
+  * added new `universal-valve-toolbox` package (`1.0.0.0`–`1.0.0.4`): EpicMorg's launcher for the Valve SDKs and Source game tools, portable release zip from GitHub (.NET Framework 4.8); users may write its `json` folder, `settings.json` and `projects` are kept over upgrades.
+  * added new `retime-phoneme-util-gui` package (`1.0.0.0`, `1.1.0.0`): Antinomy Collective's GUI for Retime Phoneme Util (Source engine phoneme / lip-sync data), portable self-contained .NET 7 `win10` zips (x86 / x64) from GitHub.
   * `ipmicfg`, `ipmiview`, `smcipmitool`: back to downloading the official Supermicro archive at install time (sha256-pinned); the embedded zips and `legal\` are gone. The Chocolatey reviewer confirmed that URL-based packages are fine and that the verifier's 403 from Supermicro's download server is environmental (covered by a verification exemption). `.gitignore` for the big zips removed.
 * `oct 2026`
   * `winbox`: added the missing stable `3.8`, `3.13`, `3.15`, `3.25`, `3.26`, `3.33` and all pre-releases `3.0beta1`–`3.0rc17`, `4.0beta1`–`4.0rc3` (versioned `x.y.z.<date>-<betaN|rcN>`, install with `--pre`); the new versions are titled `MikroTik WinBox (Portable)`.

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hammer-mcp</id>
+    <version>0.1.0-alpha</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Hammer-MCP (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/Hammer-MCP</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/Hammer-MCP/v0.1.0-alpha/docs/media/hammer-mcp-red-512-v2.png</iconUrl>
+    <copyright>Copyright (c) 2026 EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/Hammer-MCP/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/Hammer-MCP</projectSourceUrl>
+    <docsUrl>https://developer.valvesoftware.com/wiki/Hammer_MCP_Server</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/Hammer-MCP/issues</bugTrackerUrl>
+    <tags>hammer-mcp hammer source-engine valve mcp model-context-protocol ai level-design mapping gamedev foss</tags>
+    <summary>Let AI agents see and edit maps in Valve Hammer Editor - live.</summary>
+    <description>Ask your agent *"put a warm light at each corner of the room and name them by the scheme"* - and watch the entities appear in the Hammer you already have open. No plugins, no patched editor: Hammer-MCP is an [MCP](https://modelcontextprotocol.io) server that talks to Valve Hammer Editor through the shell channel Valve built into the editor (`Worldcraft_ShellMessageWnd`, the mechanism behind `editor_sendcommand.cpp` in the Source SDK) and through Hammer's own menu commands.
+
+![Hammer-MCP](https://raw.githubusercontent.com/EpicMorg/Hammer-MCP/v0.6.0/docs/media/screenshot-2.png)
+
+## This version
+The features of this release are listed in the release notes below; the latest version also has `hammer-mcp-cli` (MCP server without the tray app).
+
+## Quick start
+1. Run **Hammer-MCP** (Start menu or `hammer-mcp`) - it lives in the tray.
+2. Pick the Hammer process -&gt; **Attach** -&gt; **Start**.
+3. Connect your agent (tray menu -&gt; *Copy client config*):
+   `claude mcp add --transport http hammer http://127.0.0.1:47800/mcp`
+4. Open a map in Hammer and save it. Ask away.
+
+
+## Safety and VAC
+Hammer-MCP never injects into or writes to game processes: the shell channel and menu commands are window messages to the standalone editor process, so it is safe to run next to games with Valve Anti-Cheat.
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) is put on the PATH, and a Start menu shortcut is created.
+- Windows 10/11 x64 only. Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Status: alpha (an early release; see the latest version for the current one).
+</description>
+    <releaseNotes>## [0.1.0-alpha] - 2026-11-12
+
+First public pre-release.
+
+### Added
+- MCP server over Streamable HTTP (`/mcp`, default port 47800, Bearer token; required when not bound to localhost).
+- Tray app (WinForms): pick and attach a running Hammer, start / stop the server, modes (Auto / Basic / Shell / Advanced), bind address, port, token, logs, About.
+- Live editing through Hammer's shell channel (`Worldcraft_ShellMessageWnd`): `create_entity`, `set_keyvalue`, `rotate_entity`, `delete_entity` (refused when the address is ambiguous), `undo`, `redo`, `save_map`, `open_run_map_dialog`, `open_check_for_problems`.
+- Reading the saved map: `hammer_status`, `map_summary`, `list_entities`.
+- Embedded build registry (`registry/hammers.json`, overridable by a file next to the exe).
+
+Full changelog: https://github.com/EpicMorg/Hammer-MCP/blob/master/CHANGELOG.md
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

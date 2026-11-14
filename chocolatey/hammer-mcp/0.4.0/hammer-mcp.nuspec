@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hammer-mcp</id>
+    <version>0.4.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Hammer-MCP (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/Hammer-MCP</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/Hammer-MCP/v0.4.0/docs/media/hammer-mcp-red-512-v2.png</iconUrl>
+    <copyright>Copyright (c) 2026 EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/Hammer-MCP/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/Hammer-MCP</projectSourceUrl>
+    <docsUrl>https://developer.valvesoftware.com/wiki/Hammer_MCP_Server</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/Hammer-MCP/issues</bugTrackerUrl>
+    <tags>hammer-mcp hammer source-engine valve mcp model-context-protocol ai level-design mapping gamedev foss</tags>
+    <summary>Let AI agents see and edit maps in Valve Hammer Editor - live.</summary>
+    <description>Ask your agent *"put a warm light at each corner of the room and name them by the scheme"* - and watch the entities appear in the Hammer you already have open. No plugins, no patched editor: Hammer-MCP is an [MCP](https://modelcontextprotocol.io) server that talks to Valve Hammer Editor through the shell channel Valve built into the editor (`Worldcraft_ShellMessageWnd`, the mechanism behind `editor_sendcommand.cpp` in the Source SDK) and through Hammer's own menu commands.
+
+![Hammer-MCP](https://raw.githubusercontent.com/EpicMorg/Hammer-MCP/v0.6.0/docs/media/screenshot-2.png)
+
+## This version
+The features of this release are listed in the release notes below; the latest version also has `hammer-mcp-cli` (MCP server without the tray app).
+
+## Quick start
+1. Run **Hammer-MCP** (Start menu or `hammer-mcp`) - it lives in the tray.
+2. Pick the Hammer process -&gt; **Attach** -&gt; **Start**.
+3. Connect your agent (tray menu -&gt; *Copy client config*):
+   `claude mcp add --transport http hammer http://127.0.0.1:47800/mcp`
+4. Open a map in Hammer and save it. Ask away.
+
+
+## Safety and VAC
+Hammer-MCP never injects into or writes to game processes: the shell channel and menu commands are window messages to the standalone editor process, so it is safe to run next to games with Valve Anti-Cheat.
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) is put on the PATH, and a Start menu shortcut is created.
+- Windows 10/11 x64 only. Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Status: alpha (an early release; see the latest version for the current one).
+</description>
+    <releaseNotes>## [0.4.0] - 2026-11-13
+
+Source 2: unsaved Hammer state through the developer console, prefabs expanded; Strata game config and autosaves.
+
+### Added
+- **Strata (Portal: Revolution)**: game config from `hammer/cfg/gameconfig.txt` (paths with `..\..` as shipped are normalised), autosave folder from `hammer/cfg/HammerConfig.vdf` (KV3) for `fromAutosave`; `revolution.fgd` reads cleanly (563 classes).
+- **Source 2 developer console** (`source2_console`): allowlisted commands over VConsole2 (TCP 127.0.0.1:29000, the channel `vconsole2.exe` uses) - `hammer_map_files`, `hammer_force_autosave`, `hammer_prefab_tree`, `find`, `help`, `status`, …; nothing is injected. Verified live on CS2 (no `-vconsole` needed).
+- **vmap prefabs and instances are expanded**: `CMapPrefab` (another `.vmap`, resolved in the map's mod / addon folder, then the stock mod) and `CMapInstance` with their transforms, nested up to 6 levels; their entities get ids from 1000000 and `prefab` / `prefab_node` keyvalues. Dota's `dota.vmap`: 69 entities of its own, 1734 with 67 prefabs.
+- **Unsaved Source 2 state**: read tools with `fromAutosave=true` run `hammer_force_autosave` in the developer console and read the newest autosave from `content\_toolsautosave\hammer\&lt;map folder&gt;` (prefabs still resolved in the real content folder). The open map comes from `hammer_map_files` when the window title has none. Verified: the console works without `-vconsole` in Workshop Tools.
+- Developer console output is clean: PRNT messages have a 28-byte header (channel, flags, colour, time) before the text, verified on CS2.
+
+Full changelog: https://github.com/EpicMorg/Hammer-MCP/blob/master/CHANGELOG.md
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

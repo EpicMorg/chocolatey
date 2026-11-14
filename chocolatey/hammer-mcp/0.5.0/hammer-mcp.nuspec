@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hammer-mcp</id>
+    <version>0.5.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Hammer-MCP (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/Hammer-MCP</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/Hammer-MCP/v0.5.0/docs/media/hammer-mcp-red-512-v2.png</iconUrl>
+    <copyright>Copyright (c) 2026 EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/Hammer-MCP/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/Hammer-MCP</projectSourceUrl>
+    <docsUrl>https://developer.valvesoftware.com/wiki/Hammer_MCP_Server</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/Hammer-MCP/issues</bugTrackerUrl>
+    <tags>hammer-mcp hammer source-engine valve mcp model-context-protocol ai level-design mapping gamedev foss</tags>
+    <summary>Let AI agents see and edit maps in Valve Hammer Editor - live.</summary>
+    <description>Ask your agent *"put a warm light at each corner of the room and name them by the scheme"* - and watch the entities appear in the Hammer you already have open. No plugins, no patched editor: Hammer-MCP is an [MCP](https://modelcontextprotocol.io) server that talks to Valve Hammer Editor through the shell channel Valve built into the editor (`Worldcraft_ShellMessageWnd`, the mechanism behind `editor_sendcommand.cpp` in the Source SDK) and through Hammer's own menu commands.
+
+![Hammer-MCP](https://raw.githubusercontent.com/EpicMorg/Hammer-MCP/v0.6.0/docs/media/screenshot-2.png)
+
+## This version
+The features of this release are listed in the release notes below; the latest version also has `hammer-mcp-cli` (MCP server without the tray app).
+
+## Quick start
+1. Run **Hammer-MCP** (Start menu or `hammer-mcp`) - it lives in the tray.
+2. Pick the Hammer process -&gt; **Attach** -&gt; **Start**.
+3. Connect your agent (tray menu -&gt; *Copy client config*):
+   `claude mcp add --transport http hammer http://127.0.0.1:47800/mcp`
+4. Open a map in Hammer and save it. Ask away.
+
+
+## Safety and VAC
+Hammer-MCP never injects into or writes to game processes: the shell channel and menu commands are window messages to the standalone editor process, so it is safe to run next to games with Valve Anti-Cheat.
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) is put on the PATH, and a Start menu shortcut is created.
+- Windows 10/11 x64 only. Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Status: alpha (an early release; see the latest version for the current one).
+</description>
+    <releaseNotes>## [0.5.0] - 2026-11-14
+
+Brush entities, outputs written as keyvalues, Source 2 prefab variables; Strata and stock TF2 Hammer verified live.
+
+### Added
+- **Brush entities** (`trigger_*`, `func_*`) are addressed by the centre of their brushes: Hammer++ and stock Hammer write it as their `origin`; for .vmf files without it the centre is computed from the brush planes (`center` in `list_entities` / `get_entity`). Verified live on Hammer++ and stock TF2 Hammer: `set_keyvalue`, outputs, and `delete_entity`, which removes the entity together with its brushes.
+- **Outputs written as keyvalues**: `validate_map` lists them (`outputsAsKeyValues`) and checks their targets and inputs; `get_entity` / `find_io` show them as outputs.
+- **vmap prefab variables**: keyvalues bound to prefab variables get the placed prefab's values - defaults, choice groups (e.g. `TowerLocation = middle_tier_3` sets the tower's name and unit) and overrides; a named prefab is an I/O target of the outer map. Dota towers now get their real names. `fixupEntityNames` is not applied (the renaming rule is not confirmed by the data).
+- App: right-click menu on the Meta info grid - Copy (cell), Copy row, Copy all.
+- `hammer_status` lists all window titles of the process when no open map is found.
+
+### Changed
+- Strata (Portal: Revolution x64) verified live: build, game config, FGD, `validate_map`, `check_assets`, Run Map sequences. `$postcompiler_exe` and `$bsp` are expanded; `|all_source_engine_paths|` points to the game root when the game exe lives in `bin\win64`.
+- Strata ships `"Autosave Dir" = "\\autosave\\"`, which Hammer rejects (not an absolute path, autosaves disabled); `fromAutosave` now says so instead of looking in a guessed folder.
+- A bare map file name in the Hammer title (seen on Strata) is looked up in the MapDir of the Hammer's game configs.
+- Source 2 maps are cached by path + write time + size: a big `.vmap` with prefabs is not re-read on every call.
+
+Full changelog: https://github.com/EpicMorg/Hammer-MCP/blob/master/CHANGELOG.md
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

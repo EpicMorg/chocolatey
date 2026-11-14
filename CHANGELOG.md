@@ -1,6 +1,6 @@
 ## Changelog
 * `nov 2026`
-  * added new `hammer-mcp` package (`0.1.0-alpha`–`0.6.0`): EpicMorg's MCP server for Valve Hammer Editor, portable release zips from GitHub (x86 and x64); `hammer-mcp` (tray app, GUI shim) and, since `0.6.0`, `hammer-mcp-cli` (console) on the PATH, Start menu shortcut.
+  * added new `hammer-mcp` package (`0.1.0-alpha`–`0.7.0`): EpicMorg's MCP server for Valve Hammer Editor, portable release zips from GitHub (x86 and x64); `hammer-mcp` (tray app, GUI shim) and, since `0.6.0`, `hammer-mcp-cli` (console) on the PATH, Start menu shortcut; since `0.7.0` the `native` folder (adapter DLLs, injectors, not shimmed) is kept next to the exe.
   * added new `universal-valve-toolbox` package (`1.0.0.0`–`1.0.0.4`): EpicMorg's launcher for the Valve SDKs and Source game tools, portable release zip from GitHub (.NET Framework 4.8); users may write its `json` folder, `settings.json` and `projects` are kept over upgrades.
   * added new `retime-phoneme-util-gui` package (`1.0.0.0`, `1.1.0.0`): Antinomy Collective's GUI for Retime Phoneme Util (Source engine phoneme / lip-sync data), portable self-contained .NET 7 `win10` zips (x86 / x64) from GitHub.
   * `ipmicfg`, `ipmiview`, `smcipmitool`: back to downloading the official Supermicro archive at install time (sha256-pinned); the embedded zips and `legal\` are gone. The Chocolatey reviewer confirmed that URL-based packages are fine and that the verifier's 403 from Supermicro's download server is environmental (covered by a verification exemption). `.gitignore` for the big zips removed.

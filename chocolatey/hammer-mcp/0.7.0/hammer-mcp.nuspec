@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hammer-mcp</id>
+    <version>0.7.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Hammer-MCP (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/Hammer-MCP</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/Hammer-MCP/v0.7.0/docs/media/hammer-mcp-red-512-v2.png</iconUrl>
+    <copyright>Copyright (c) 2026 EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/Hammer-MCP/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/Hammer-MCP</projectSourceUrl>
+    <docsUrl>https://developer.valvesoftware.com/wiki/Hammer_MCP_Server</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/Hammer-MCP/issues</bugTrackerUrl>
+    <tags>hammer-mcp hammer source-engine valve mcp model-context-protocol ai level-design mapping gamedev foss</tags>
+    <summary>Let AI agents see and edit maps in Valve Hammer Editor - live.</summary>
+    <description>Ask your agent *"put a warm light at each corner of the room and name them by the scheme"* - and watch the entities appear in the Hammer you already have open. No plugins, no patched editor: Hammer-MCP is an [MCP](https://modelcontextprotocol.io) server that talks to Valve Hammer Editor through the shell channel Valve built into the editor (`Worldcraft_ShellMessageWnd`, the mechanism behind `editor_sendcommand.cpp` in the Source SDK) and through Hammer's own menu commands.
+
+![Hammer-MCP](https://raw.githubusercontent.com/EpicMorg/Hammer-MCP/v0.7.0/docs/media/screenshot-2.png)
+
+## What works
+- Create point entities with keyvalues, set keyvalues, rotate and delete entities - live, with Hammer's undo (Ctrl+Z works)
+- Save / undo / redo / Run Map / Check for Problems through Hammer's menu commands
+- Map knowledge from the saved `.vmf`: summary, entities, outputs and the I/O graph, validation against the game's FGD, asset checks
+- Compile with Hammer's own Run Map sequences, parsed compile log, leak trace, compiled `.bsp` entities
+- Recognises the running Hammer build by hash; token auth, localhost by default (LAN-capable)
+- **New in 0.7:** optional adapter inside Hammer (press *Connect adapter*): an **MCP** menu with pause / resume, a chat with the agent, a live activity log and pending changes
+- Approval mode (*Ask me before agent edits*): the agent's edits wait until you apply or reject them
+- `find_assets`: find models, materials, sounds, particles... by name in the game's search paths and VPKs
+- Tray *Copy client config* for Claude Code, Codex, OpenCode, Gemini CLI, Cursor, VS Code / Copilot, Claude Desktop
+
+## Supported editors
+Stock Source Hammer (Source SDK 2013, HL2, Portal, TF2, CS:S, L4D2, Portal 2, GMod, ...; x86 and x64), [Hammer++](https://github.com/ficool2/HammerPlusPlus-Website) 8867+, Slammin' Hammer, Black Mesa; menu commands and map files for Strata Hammer; read-only Source 2 (`.vmap`) and GoldSrc maps.
+
+## Quick start
+1. Run **Hammer-MCP** (Start menu or `hammer-mcp`) - it lives in the tray.
+2. Pick the Hammer process -&gt; **Attach** -&gt; **Start**.
+3. Connect your agent (tray menu -&gt; *Copy client config*):
+   `claude mcp add --transport http hammer http://127.0.0.1:47800/mcp`
+4. Open a map in Hammer and save it. Ask away.
+
+Without the tray app, MCP clients that start servers themselves can run `hammer-mcp-cli` (`--stdio` by default, `--http`, `--auto` / `--pid N`, `--mode`).
+
+## Safety and VAC
+Hammer-MCP never injects into or writes to game processes: the shell channel and menu commands are window messages to the standalone editor process, so it is safe to run next to games with Valve Anti-Cheat. The optional adapter (0.7+) is injected only when you press **Connect adapter**, and only into a standalone Hammer of a known build - never into a game process, Source 2 or an unknown build (the native injector re-checks this before it opens the process).
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) and `hammer-mcp-cli` (console) are put on the PATH, and a Start menu shortcut is created. The `native` folder (adapter DLLs and injectors) stays next to the exe; the injectors are not shimmed.
+- Windows 10/11, x86 and x64 (the 32-bit build also works with a 64-bit Hammer). Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Status: beta.
+</description>
+    <releaseNotes>## [0.7.0] - 2026-11-15
+
+### Added
+- **The adapter**. Nothing is injected unless you press **Connect adapter**. The app's **Connect adapter** button (MCP Mode Auto or Advanced; known standalone Hammer builds) injects a small native adapter into the attached Hammer - one DLL per bitness (`hmcp-adapter-x86/x64.dll`) that finds its build itself; the server sends it the build profile from its registry. It adds an **MCP** menu (with icons) to Hammer's main menu bar: pause / resume the agent (every edit is refused while paused - shell channel and menu commands too), **Chat with the agent...** (a chat window: your lines reach the agent in `hammer_status.userRequests` / `user_requests`, once; the agent answers with the new `say_to_user` tool), **Activity log...** (a live window), **Pending changes** (a list with check boxes), status, disconnect, about. Auto never injects by itself: it uses the adapter when you connected it, and after Attach connects to an adapter that is already loaded (e.g. the app was restarted). **Advanced** is now strict (for debugging): everything that changes Hammer goes through the adapter only, which cannot edit yet - so edits, menu commands and compiles are refused there. Basic and Shell do not use the adapter. Never injected into a game process (VAC / anti-cheat), Source 2, or an unknown build; the native injector re-checks the policy before it opens the process. `hammer_status` reports `adapter` and `agentPaused`; `user_requests` also returns `recentChat` (the last 10 chat lines from both sides). The chat is a side channel (it says so on top): the agent reads it between its steps, and the new `wait_for_user` tool lets it wait there for your answer (up to 10 minutes) - nothing in MCP can wake an idle agent, so otherwise write to it in its own window. The release zip has a `native` folder next to `hammer-mcp.exe` (both injectors and adapters) - keep it there.
+
+- **x86 build**: every release now also has `hammer-mcp-v&lt;version&gt;-win-x86.zip` (same layout as win-x64) for 32-bit Windows; x86 zips were added to the earlier releases too. The 32-bit app works with 64-bit Hammer as well.
+
+- **`find_assets`**: find content by name in the game of the attached Hammer - loose files and VPKs from the search paths (Source 1: `gameinfo.txt`; Source 2: `game/&lt;mod&gt;`, `content/&lt;mod&gt;`, `core`, compiled `*_c` reported as Hammer writes them): models, materials, textures, sounds, sprites, particles. A part of the path or a wildcard (`props_2fort/*locker*`, `ambient/wind*`); each hit has `keyValue` (what to write in the entity: material `tools/toolsnodraw`, sound `ambient/wind1.wav`) and the source it comes from (the first one wins). GoldSrc (WADs, its game config) comes later.
+
+- App: **Settings &gt; Logs** - save the log to daily files (`hammer-mcp-yyyy-MM-dd.log`, on by default, folder `%APPDATA%\EpicMorg\Hammer-MCP\logs` or your own), Browse... and Open folder. The window is a bit taller.
+
+- **Approval mode** (app: **Ask me before agent edits**): the agent's edits - create / set_keyvalue / rotate / delete, save_map, undo, redo, run_compile - wait until you apply or reject them: in the **Pending changes** window that pops up (Apply selected / Apply all / Reject all) or in Hammer's **MCP &gt; Pending changes (N)** (with the adapter). The tool call waits up to 2 minutes; a rejected change tells the agent not to repeat it; a late decision is reported by the new `pending_changes` tool. Applied changes run one at a time in the order the agent asked for them; an entity's address is checked again when the change is applied (the map may have changed meanwhile). Pausing the agent rejects everything waiting or queued. At most 20 changes wait at once. `hammer_status` shows `approval` and `pendingChanges`.
+
+- App: tray **Copy client config** has ready-to-paste settings for Claude Code, Codex, OpenCode, Gemini CLI, Cursor, VS Code / Copilot and Claude Desktop (via mcp-remote), with the token if one is set.
+
+- App: **Ask me before agent edits** is remembered between runs (saved as soon as it is toggled).
+
+### Changed
+- **Advanced** mode is strict (adapter only, for debugging): edits, menu commands and compiles are refused until the adapter can do them - use **Auto** for work. The **Connect adapter** button works in Auto and Advanced.
+
+### Fixed
+- The editor DLL is matched to the exe: in a folder with both Slammin's `hammer.exe` and Hammer++ (Bestiarium), `hammer.exe` was identified as Hammer++.
+
+Full changelog: https://github.com/EpicMorg/Hammer-MCP/blob/master/CHANGELOG.md
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

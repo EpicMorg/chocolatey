@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hammer-mcp</id>
+    <version>0.8.0</version>
+    <packageSourceUrl>https://github.com/EpicMorg/chocolatey</packageSourceUrl>
+    <owners>epicmorg</owners>
+    <title>Hammer-MCP (Portable)</title>
+    <authors>EpicMorg</authors>
+    <projectUrl>https://github.com/EpicMorg/Hammer-MCP</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/EpicMorg/Hammer-MCP/v0.8.0/docs/media/hammer-mcp-red-512-v2.png</iconUrl>
+    <copyright>Copyright (c) 2026 EpicMorg</copyright>
+    <licenseUrl>https://github.com/EpicMorg/Hammer-MCP/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/EpicMorg/Hammer-MCP</projectSourceUrl>
+    <docsUrl>https://developer.valvesoftware.com/wiki/Hammer_MCP_Server</docsUrl>
+    <bugTrackerUrl>https://github.com/EpicMorg/Hammer-MCP/issues</bugTrackerUrl>
+    <tags>hammer-mcp hammer source-engine valve mcp model-context-protocol ai level-design mapping gamedev foss</tags>
+    <summary>Let AI agents see and edit maps in Valve Hammer Editor - live.</summary>
+    <description>Ask your agent *"put a warm light at each corner of the room and name them by the scheme"* - and watch the entities appear in the Hammer you already have open. No plugins, no patched editor: Hammer-MCP is an [MCP](https://modelcontextprotocol.io) server that talks to Valve Hammer Editor through the shell channel Valve built into the editor (`Worldcraft_ShellMessageWnd`, the mechanism behind `editor_sendcommand.cpp` in the Source SDK) and through Hammer's own menu commands.
+
+![Hammer-MCP](https://raw.githubusercontent.com/EpicMorg/Hammer-MCP/v0.8.0/docs/media/screenshot-2.png)
+
+## What works
+- Create point entities with keyvalues, set keyvalues, rotate and delete entities - live, with Hammer's undo (Ctrl+Z works)
+- Save / undo / redo / Run Map / Check for Problems through Hammer's menu commands
+- Map knowledge from the saved `.vmf`: summary, entities, outputs and the I/O graph, validation against the game's FGD, asset checks
+- Compile with Hammer's own Run Map sequences, parsed compile log, leak trace, compiled `.bsp` entities
+- Recognises the running Hammer build by hash; token auth, localhost by default (LAN-capable)
+- **New in 0.8:** GoldSrc (Worldcraft, Hammer 3.x, J.A.C.K.): game configs, WAD / PAK content, `check_assets` for `.rmf` / `.map` / `.jmf`, J.A.C.K. Run Map profiles and GoldSrc compile logs; named sounds from Source sound scripts; an OpenCode bridge (a line from Hammer's MCP chat wakes the agent in OpenCode)
+- **0.7:** optional adapter inside Hammer (press *Connect adapter*): an **MCP** menu with pause / resume, a chat with the agent, a live activity log and pending changes
+- Approval mode (*Ask me before agent edits*): the agent's edits wait until you apply or reject them
+- `find_assets`: find models, materials, sounds, particles... by name in the game's search paths and VPKs
+- Tray *Copy client config* for Claude Code, Codex, OpenCode, Gemini CLI, Cursor, VS Code / Copilot, Claude Desktop
+
+## Supported editors
+Stock Source Hammer (Source SDK 2013, HL2, Portal, TF2, CS:S, L4D2, Portal 2, GMod, ...; x86 and x64), [Hammer++](https://github.com/ficool2/HammerPlusPlus-Website) 8867+, Slammin' Hammer, Black Mesa; menu commands and map files for Strata Hammer; read-only Source 2 (`.vmap`); GoldSrc maps, game configs, assets and compiles (Worldcraft, Hammer 3.x, J.A.C.K.).
+
+## Quick start
+1. Run **Hammer-MCP** (Start menu or `hammer-mcp`) - it lives in the tray.
+2. Pick the Hammer process -&gt; **Attach** -&gt; **Start**.
+3. Connect your agent (tray menu -&gt; *Copy client config*):
+   `claude mcp add --transport http hammer http://127.0.0.1:47800/mcp`
+4. Open a map in Hammer and save it. Ask away.
+
+Without the tray app, MCP clients that start servers themselves can run `hammer-mcp-cli` (`--stdio` by default, `--http`, `--auto` / `--pid N`, `--mode`).
+
+## Safety and VAC
+Hammer-MCP never injects into or writes to game processes: the shell channel and menu commands are window messages to the standalone editor process, so it is safe to run next to games with Valve Anti-Cheat. The optional adapter (0.7+) is injected only when you press **Connect adapter**, and only into a standalone Hammer of a known build - never into a game process, Source 2 or an unknown build (the native injector re-checks this before it opens the process).
+
+## Package notes
+- Portable: the official release zip is extracted into the package folder; `hammer-mcp` (tray app, GUI) and `hammer-mcp-cli` (console) are put on the PATH, and a Start menu shortcut is created. The `native` folder (adapter DLLs and injectors) stays next to the exe; the injectors are not shimmed.
+- Windows 10/11, x86 and x64 (the 32-bit build also works with a 64-bit Hammer). Settings are kept in `%APPDATA%\EpicMorg\Hammer-MCP`.
+- Status: beta.
+</description>
+    <releaseNotes>## [0.8.0] - 2026-11-15
+
+### Added
+- **GoldSrc game configs**: the binary `GameCfg.wc` next to Worldcraft / Hammer 3.x (versions 1.3 and 1.4) is read, so `game_configs`, `fgd_*`, `compile_sequences` and `find_assets` work with GoldSrc editors too. A config gives the mod folder (`gameDir`), the game it falls back to (`valve`), FGDs (relative ones against the editor folder), map / bsp folders and the compile tools (`$csg_exe` included).
+- **`find_assets` for GoldSrc**: models (`models/scientist.mdl`; texture and sequence-group files like `scientistt.mdl`, `scientist01.mdl` are left out), sprites (`sprites/glow01.spr`), sounds (`ambience/wind1.wav`) from the mod and `valve` with their `_addon` / `_downloads` folders, plus textures by name from the WADs in those folders and decals from `decals.wad` (`{BLOOD1`; a wildcard matches names with or without the `{` `!` `+0` `-0` `~` prefix). Utility WADs (fonts, gfx, cached, spray / temp decals) are skipped. PAKs (`pak0.pak`, `pak1.pak`, ...) in those folders are searched too.
+- **The texture WAD list of Worldcraft / Hammer 3.x** (Options &gt; Textures) is read from the editor's registry key and searched first; the key of every known GoldSrc editor is in the build registry (`settingsKey`: Worldcraft 1.1-2.0, Worldcraft 2.1-3.3, Hammer 3.4/3.5 and Neo, CSM, Neon each keep their own).
+- An old `GameCfg.wc` (version 1.3, Worldcraft 1.6-2.x) has no mod folder: `&lt;game exe folder&gt;\valve` (or `id1`) is used and reported as a guess.
+- **J.A.C.K. / Jackhammer game configs** (`VDKGameCfg.ini` next to the exe): mod and base folders, FGDs, compilers, and the texture WAD list (`Parcel*`), which `find_assets` searches first.
+- **J.A.C.K. / Jackhammer Run Map profiles** (`VDKRunCfg.ini` next to the exe) in `compile_sequences` and `run_compile`: every profile (Default, Half-Life (Full), (FastVis), ...) with its steps - change directory, copy / delete / rename file, compilers, the game - and `$csg_exe` / `$bspext`. A step's "check file" (`FileCheck`) is enforced: `run_compile` stops when the step did not write it during this run (hlbsp writes no `.prt` when the map leaks; a file left from an earlier compile does not count). Delete / rename steps and copy targets may only touch files in the map folder or the game's maps folder. The same goes for "ensure file post-exists" in Hammer's sequences.
+- **GoldSrc compile logs** in `compile_log` / `run_compile`: `-----  BEGIN  hlcsg -----` stages with timings and ZHLT / VHLT leaks (`=== LEAK in hull 0 ===`, the leaking entity); the compile log is also looked for in the game's maps folder, where J.A.C.K. compiles. GoldSrc compilers read the `.map` the editor exports: `run_compile` refuses to start when that file is missing or older than the open `.rmf` / `.jmf` and says how to export it.
+- **`check_assets` for GoldSrc maps** (`.rmf`, `.map`, `.jmf`): face textures against the WADs (the game's and those in worldspawn `wad`), `infodecal` decals against `decals.wad`, models / sprites / sounds in any keyvalue and the sky (`gfx/env/&lt;skyname&gt;*.tga`) against the folders and PAKs; WADs listed in the map but found nowhere are reported. Compiler tool textures (CLIP, ORIGIN, NULL, SKIP, HINT, ...) are not checked.
+- **Sound scripts (Source 1)**: `find_assets` also finds named sounds (`Ambient.Wind`, `Weapon_Pistol.Single`) from the scripts that `scripts/game_sounds_manifest.txt` lists (`precache_file`, `preload_file`, ...; `#include` / `#base` followed), loose or inside VPKs; kind `soundscript`, each hit with its waves. Without a manifest every `scripts/game_sounds*.txt` is read. The first definition of a name wins, as in the engine. Source 2 sound events (`.vsndevts`) are not read yet.
+- **`check_assets` checks sounds (Source 1)**: sound files in any keyvalue (`ambient/wind1.wav`, sound characters like `)` or `*` stripped) against `sound/`, and the sound script name in `ambient_generic`'s `message` against the sound scripts and the map's own `maps/&lt;map&gt;_level_sounds.txt`.
+- Files inside VPKs and PAKs can now be read (not only listed).
+- **OpenCode bridge** (new OpenCode tab in the app): each line you write in Hammer's chat (MCP &gt; Chat) also goes into your OpenCode session as a message, so an agent working in OpenCode wakes up and answers without you switching windows. OpenCode 2.x (`/api/session/{id}/prompt`, queued after the agent's current turn) and 1.x (`prompt_async`); Basic auth; the session is the one you used last unless you set its id; **Test** shows where the lines go. A line the agent is already waiting for in `wait_for_user` goes there instead, and a delivered line is not handed out again by `user_requests`. A password that would go over plain http to another machine is warned about (Test) and needs confirmation (Save).
+
+### Fixed
+- Left 4 Dead and later games (Portal 2, CS:GO, ...) mount `pak01_dir.vpk` of each search path folder without listing it in `gameinfo.txt`; it is now mounted too (only when the `gameinfo.txt` lists no VPKs, as these games do - Source 2013 games list theirs), so `find_assets` and `check_assets` see that content.
+- Content is looked up in the order of the `gameinfo.txt` search paths: a VPK listed before a folder (TF2: `tf/tf2_misc.vpk` before `tf`) wins over the folder's loose files, and an auto-mounted `pak01_dir.vpk` over its folder. Before, every loose folder came first, so `find_assets` could name the wrong copy.
+- GoldSrc Hammer 3.x shows only the file name in its title when the map window is not maximized (`Valve Hammer Editor - tut1.rmf`): the full path is now taken from the process command line or found in the configs' map folders, so map tools work there.
+- `find_assets` (GoldSrc): a model whose name merely ends in `t` or two digits (`foot.mdl` next to `foo.mdl`) is no longer hidden as a texture / sequence-group file - loose files are checked by their header.
+- The build registry called a genuine Valve Hammer 3.5 build "HL-Lab" (`goldsrc-hammer-3.5-hllab` is now `goldsrc-hammer-3.5-b`).
+- Entities inside groups of `.rmf` / `.jmf` maps were not listed.
+- App: a second click on Start / Stop while the server was still starting (a double click) stopped it again a moment later.
+
+Full changelog: https://github.com/EpicMorg/Hammer-MCP/blob/master/CHANGELOG.md
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
